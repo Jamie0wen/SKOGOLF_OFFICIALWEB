@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background: #fff;
+  color: #111;
+}
+/* NAVBAR */
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  z-index: 1000;
+}
+.nav-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url("images/hero.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 60px;
+}
+.hero p {
+  font-size: 20px;
+}
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+.dark {
+  background: #111;
+  color: white;
+}
+/* MEDIA GRID */
+.media-grid {
+  display: flex;              /* horizontal row */
+  overflow-x: auto;           /* scrollable */
+  gap: 10px;                  /* spacing */
+  padding: 10px 0;
+  scroll-behavior: smooth;
+  cursor: grab;               /* indicates draggable */
+}
+
+.media-grid.active {
+  cursor: grabbing;           /* while dragging */
+}
+
+.media-grid img {
+  flex: 0 0 auto;             /* keep size */
+  width: 200px;               /* adjust as needed */
+  height: auto;
+  border-radius: 5px;         /* rounded corners */
+  transition: transform 0.2s;
+}
+
+.media-grid img:hover {
+  transform: scale(1.05);     /* zoom on hover */
+}
+
+/* Hide scrollbar for clean look */
+/* Chrome, Safari, Edge */
+.media-grid::-webkit-scrollbar {
+  display: none;
+}
+/* Firefox */
+.media-grid {
+  scrollbar-width: none;
+}
+
+.lightbox {
+  display: none;               /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 5px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* SPONSORS */
+.sponsor-logos img {
+  height: 60px;
+  margin: 20px;
+}
+/* FADE-IN */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s;
+}
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 36px;
+  }
+nav {
+    flex-direction: column;
+    align-items: center;
+  }
+}
