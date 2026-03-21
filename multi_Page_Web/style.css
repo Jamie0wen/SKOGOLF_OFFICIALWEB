@@ -1,10 +1,16 @@
-/* ===== General styles for all pages ===== */
-body {
+/* ===== BASE ===== */
+html, body {
+    height: 100%;
+    margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
-    color: #222;
-    margin: 0;
-    padding: 20px;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 h2 {
@@ -12,12 +18,159 @@ h2 {
     margin-bottom: 25px;
 }
 
-/* ===== Gallery Page ===== */
+/* ===== NAVBAR ===== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar color over About section */
+nav.navbar-about {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+nav.navbar-about a {
+    color: inherit;
+}
+
+/* Inner container */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+/* Links */
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #C13584;
+}
+
+nav a.current {
+    font-weight: bold;
+    text-decoration: underline;
+    pointer-events: none;
+    color: red;
+}
+
+/* Transparent navbar on homepage top */
+body.home nav {
+    background: transparent;
+}
+
+/* Prevent navbar overlap (non-home pages) */
+body:not(.home) main {
+    padding-top: 100px;
+}
+
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: url("images/img6.jpg") center / cover no-repeat;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-overlay p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* ===== ABOUT ===== */
+.about {
+    padding: 80px 20px;
+    background: #a2eeb1;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-text,
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* ===== FACTS ===== */
+.facts {
+    padding: 60px 20px;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.facts-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* ===== GALLERY ===== */
 #media {
     max-width: 900px;
     margin: 0 auto;
     padding: 25px;
-    background-color: #fff;
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -30,10 +183,9 @@ h2 {
 
 .media-grid img {
     width: 100%;
-    height: auto;
     border-radius: 6px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .media-grid img:hover {
@@ -44,10 +196,7 @@ h2 {
 /* Lightbox */
 #lightbox {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.85);
     display: none;
     justify-content: center;
@@ -55,28 +204,10 @@ h2 {
     z-index: 1000;
 }
 
-/* Lightbox arrows */
-.nav-arrow {
-    position: absolute;
-    top: 50%;
-    font-size: 3rem;
-    color: #fff;
-    cursor: pointer;
-    user-select: none;
-    transform: translateY(-50%);
-    padding: 10px;
-}
-
-.nav-arrow.prev { left: 20px; }
-.nav-arrow.next { right: 20px; }
-
-.nav-arrow:hover { color: #ddd; }
-
 #lightbox img {
     max-width: 90%;
     max-height: 90%;
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 #lightbox .close {
@@ -86,27 +217,34 @@ h2 {
     font-size: 2rem;
     color: #fff;
     cursor: pointer;
-    font-weight: bold;
 }
 
-/* ===== What's in the Bag Page ===== */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.nav-arrow.prev { left: 20px; }
+.nav-arrow.next { right: 20px; }
+
+/* ===== BAG ===== */
 #golf-bag {
     max-width: 700px;
     margin: 0 auto;
-    background: #fff;
     padding: 25px;
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-#golf-bag dl {
-    line-height: 1.8;
 }
 
 #golf-bag dt {
     font-weight: bold;
     margin-top: 20px;
-    color: #333;
 }
 
 #golf-bag dd {
@@ -114,11 +252,7 @@ h2 {
     margin-bottom: 15px;
 }
 
-#golf-bag dd span {
-    display: block;
-}
-
-/* ===== Results Page ===== */
+/* ===== RESULTS ===== */
 #career-highlights {
     max-width: 800px;
     margin: 0 auto;
@@ -126,53 +260,29 @@ h2 {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    line-height: 1.6;
 }
 
-#career-highlights .year {
-    margin-bottom: 20px;
-}
+.gold { color: #FFD700; font-weight: bold; }
+.silver { color: #C0C0C0; font-weight: bold; }
+.bronze { color: #CD7F32; font-weight: bold; }
+.low-score { color: red; font-weight: normal; }
+.highlight { color: red; font-weight: bold; }
 
-#career-highlights strong {
-    font-weight: bold;
-}
+.year { margin-bottom: 20px; }
 
-/* Highlight low scores */
-#career-highlights .highlight {
-    color: red;
-    font-weight: bold;
-}
-/* Navbar active link */
-nav a.current {
-    font-weight: bold;
-    text-decoration: underline;
-    pointer-events: none; /* optional: prevent clicking current page */
-    color: #000;
-}
-
-
-/* ===== Footer Styles ===== */
+/* ===== FOOTER ===== */
 #footer {
-    position: fixed;    /* makes it always at the bottom of the screen */
-    bottom: 0;
-    width: 100%;
-    background-color: #222;
+    background: #222;
     color: #fff;
     padding: 15px 0;
     text-align: center;
-    z-index: 100;       /* ensures it sits on top of other content */
+    margin-top: auto;
 }
 
-#footer h2 {
-    margin: 0 0 10px;
-    font-size: 1.5rem;
-}
-
-#footer .socials {
+#footer .Social {
     display: flex;
     justify-content: center;
     gap: 15px;
-    align-items: center;
 }
 
 #footer .social-icon i {
@@ -188,10 +298,28 @@ nav a.current {
 
 #footer .social-img {
     height: 60px;
-    width: auto;
     transition: transform 0.3s;
 }
 
 #footer .social-img:hover {
     transform: scale(1.3);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    nav .logo {
+        font-size: 1.2rem;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
 }

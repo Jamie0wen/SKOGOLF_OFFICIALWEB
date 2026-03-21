@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery | SKO Golf</title>
-  <link rel="stylesheet" href="multi_Page_Web/style.css">
+  <link rel="stylesheet" href="../style.css">
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
@@ -12,47 +12,68 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
+ <!-- NAVBAR -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="bag.html">Bag</a>
-    <a href="gallery.html" class="current">Gallery</a>
-    <a href="sponsers.html">Sponsors</a>
-    <a href="results.html">Results</a>
-  </nav>
+    <div class="nav-container">
+    <a href="index.html" class="logo">SKO Golf</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="bag.html">In The Bag</a>
+        <a href="gallery.html"class="current">Gallery</a>
+        <a href="results.html">Results</a>
+        <a href="sponsors.html">Sponsors</a>
+    </div>
+</nav>
+
+
+ <main>
 
   <!-- GALLERY -->
   <section id="media" class="section dark fade">
     <h2>Gallery</h2>
     <div class="media-grid">
-      <img src="multi_Page_Web/images/img1.jpeg" alt="Gallery Image 1">
-      <img src="multi_Page_Web/images/img2.jpeg" alt="Gallery Image 2">
-      <img src="multi_Page_Web/images/img3.jpeg" alt="Gallery Image 3">
-      <img src="multi_Page_Web/images/img4.jpeg" alt="Gallery Image 4">
-      <img src="multi_Page_Web/images/img5.jpeg" alt="Gallery Image 5">
+      <img src="../images/img1.jpeg" alt="Gallery Image 1">
+      <img src="../images/img2.jpeg" alt="Gallery Image 2">
+      <img src="../images/img3.jpeg" alt="Gallery Image 3">
+      <img src="../images/img4.jpeg" alt="Gallery Image 4">
+      <img src="../images/img5.jpeg" alt="Gallery Image 5">
+      <img src="../images/img6.jpg" alt="Gallery Image 6">
+      <img src="../images/img7.jpeg" alt="Gallery Image 7">
+      <img src="../images/img8.jpg" alt="Gallery Image 8">
+      <img src="../images/img9.jpeg" alt="Gallery Image 9">
     </div>
   </section>
 
-  <!-- FOOTER / SOCIALS -->
-  <footer id="footer">
-    <h2>Socials</h2>
-    <div class="socials">
-      <a href="https://www.instagram.com/sko.golf/" target="_blank" class="social-icon">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.wagr.com/playerprofile/saskia-owen-42518" target="_blank" class="social-icon">
-        <img src="multi_Page_Web/images/WAGR.png" alt="WAGR" class="social-img">
-      </a>
-      <a href="https://peakusa.golf/coach-centre/saskia-owen/" target="_blank" class="social-icon">
-        <img src="multi_Page_Web/images/PeakUSA.jpg" alt="PeakUSA" class="social-img">
-      </a>
-      <a href="https://www.europeangolfrankings.com/players/34088" target="_blank" class="social-icon">
-        <img src="multi_Page_Web/images/EGR.jpg" alt="EGR" class="social-img">
-      </a>
-    </div>
-  </footer>
+<!-- Lightbox -->
+<div id="lightbox">
+  <span class="close">&times;</span>
+  <img src="" alt="">
+</div>
+
+
+ <main>
+
+<!-- FOOTER / Social -->
+    <footer id="footer">
+        <h2>Social</h2>
+        <div class="Social">
+            <a href="https://www.instagram.com/sko.golf/" target="_blank" class="social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.wagr.com/playerprofile/saskia-owen-42518" target="_blank" class="social-icon">
+                <img src="../images/WAGR.png" alt="WAGR" class="social-img">
+            </a>
+            <a href="https://peakusa.golf/coach-centre/saskia-owen/" target="_blank" class="social-icon">
+                <img src="../images/PeakUSA.jpg" alt="PeakUSA" class="social-img">
+            </a>
+            <a href="https://www.europeangolfrankings.com/players/34088" target="_blank" class="social-icon">
+                <img src="../images/EGR.jpg" alt="EGR" class="social-img">
+            </a>
+        </div>
+    </footer>
+
 
  <!-- Scripts -->
-<script src="multi_Page_Web/script.js"></script>
+<script src="../script.js"></script>
 </body>
 </html>
