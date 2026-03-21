@@ -1,0 +1,420 @@
+/* ===== BASE ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(2, 100, 56, 0.55);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+nav.navbar-about {
+    background: #f1f1f1;
+    color: #000;
+}
+
+nav.navbar-about a {
+    color: inherit;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 60px; /* fixed height to prevent logo pushing navbar */
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* vertically center logo & links */
+}
+
+nav .logo-img {
+    height: 150px; /* adjust to match text size */
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #b729a1;
+}
+
+nav a.current {
+    font-weight: bold;
+    text-decoration: underline;
+    color: red;
+}
+
+body.home nav {
+    background: transparent;
+}
+
+body:not(.home) main {
+    padding-top: 90px; /* prevent content hiding under navbar */
+}
+
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url("images/img6.jpg") center/cover no-repeat;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.43);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-overlay p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* ===== ABOUT ===== */
+#about-section {
+    min-height: 100vh;
+    scroll-margin-top: -50px;
+}
+
+.about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 20px;
+    background: #a2eeb1;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.about-text, .about-image {
+    flex: 1 1 300px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* ===== QUICK FACTS ===== */
+.about .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.about .facts-grid div {
+    background: #C13584;
+    color: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about .facts-grid div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+}
+
+/* Optional: stripe style for Quick Facts */
+.facts-stripe {
+    background: linear-gradient(90deg, #459127, #a6e942);
+    padding: 25px 15px;
+}
+
+/* Container for Quick Facts */
+.facts-stripe .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* smaller boxes */
+    gap: 25px; /* space between boxes */
+}
+
+/* Individual fact boxes */
+.facts-stripe .facts-grid div {
+    background: rgba(173, 181, 28, 0.15); /* semi-transparent stripe effect */
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.facts-stripe .facts-grid div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+}
+
+/* ===== GALLERY ===== */
+#media {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.media-grid img {
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.media-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ===== LIGHTBOX ===== */
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+#lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-arrow.prev { left: 20px; }
+.nav-arrow.next { right: 20px; }
+
+/* ===== CONTENT PAGES ===== */
+#golf-bag,
+#career-highlights {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ===== FOOTER ===== */
+#footer {
+    background: #222;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+#footer .Social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#footer .social-icon i,
+#footer .social-img {
+    transition: transform 0.3s, color 0.3s;
+}
+
+#footer .social-icon i {
+    font-size: 40px;
+    color: #C13584;
+}
+
+#footer .social-icon i:hover {
+    transform: scale(1.3);
+    color: #E1306C;
+}
+
+#footer .social-img {
+    height: 60px;
+}
+
+#footer .social-img:hover {
+    transform: scale(1.3);
+}
+
+footer {
+  text-align: center;
+  font-size: 0.85rem; /* makes the text smaller */
+  padding: 30px 0;    /* more space above and below the text */
+  background-color: #f1f1f1; /* optional */
+  color: #333;
+  width: 100%;
+  /* optional if you want it always at the bottom of the page */
+  position: relative; 
+  bottom: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 15px;
+    }
+
+    nav .logo, nav .logo-img {
+        font-size: 1.2rem;
+        height: 35px;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+}
+
+/* ===== RESULTS COLORS ===== */
+.gold    { color: #FFD700; font-weight: bold; }
+.silver  { color: #C0C0C0; font-weight: bold; }
+.bronze  { color: #CD7F32; font-weight: bold; }
+.low-score { color: red; font-weight: normal; }
+.highlight { color: red; font-weight: bold; }
+
+#career-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* space between each year */
+}
+
+
+
+
+/* ===== SPONSORS SECTION ===== */
+#sponsors {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+#sponsors h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+#sponsors p {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Container for sponsor icons */
+.Sponsors {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* spacing between icons */
+    flex-wrap: wrap; /* wrap to next line on smaller screens */
+}
+
+/* Each sponsor icon link */
+.sponsor-icon {
+    display: inline-block;
+    width: 120px;  /* adjust size as needed */
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%; /* makes circle */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsor-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+/* Sponsor images */
+.sponsor-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* crops image to fit circle */
+    display: block;
+}
