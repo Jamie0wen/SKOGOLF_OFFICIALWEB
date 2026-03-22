@@ -23,6 +23,7 @@ h2, h3 {
 }
 
 /* ===== NAVBAR ===== */
+
 nav {
     position: fixed;
     top: 0;
@@ -88,6 +89,36 @@ body.home nav {
 body:not(.home) main {
     padding-top: 90px; /* prevent content hiding under navbar */
 }
+
+
+
+/* ===== ABOUT PAGE NAVBAR STYLE ===== */
+body.about nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+}
+
+/* Fix text colour on light background */
+body.about nav a {
+    color: #000;
+}
+
+body.about nav {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* When scrolling into About (homepage) */
+nav.nav-scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+}
+
+nav.nav-scrolled a {
+    color: #000;
+}
+
 
 /* ===== HERO ===== */
 .hero {
@@ -187,7 +218,7 @@ body:not(.home) main {
 /* Container for Quick Facts */
 .facts-stripe .facts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* smaller boxes */
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* smaller boxes */
     gap: 25px; /* space between boxes */
 }
 
@@ -216,6 +247,8 @@ body:not(.home) main {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding-top: 10px;   /* space you want above content */
+    margin-top: -10px; 
 }
 
 .media-grid {
@@ -232,7 +265,7 @@ body:not(.home) main {
 }
 
 .media-grid img:hover {
-    transform: scale(1.05);
+    transform: scale(1.15);
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
@@ -359,6 +392,8 @@ footer {
     max-width: 1000px;
     margin: 80px auto;
     padding: 20px;
+    padding-top: 20px;   /* space you want above content */
+    margin-top: -110px;   /* push the section up slightly to offset navbar */
 }
 
 #golf-bag h2 {
@@ -424,9 +459,10 @@ footer {
 #career-highlights {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* space between each year */
+  gap: 10px; /* space between each year */
+  margin-bottom: -60px;  /* shrink the gap to footer */
+  padding-bottom: 10px; /* optional: further reduce spacing */
 }
-
 
 
 /* ===== SPONSORS SECTION ===== */
@@ -434,6 +470,8 @@ footer {
     text-align: center;
     padding: 50px 20px;
     background-color: #f9f9f9;
+    padding-top: 20px;   /* space you want above content */
+    margin-top: -100px;   /* push the section up slightly to offset navbar */
 }
 
 #sponsors h2 {
@@ -545,4 +583,19 @@ footer {
     object-fit: cover;
 }
 
+/*Past Sponsers */
+.past-title {
+    margin-top: 60px; /* more space above past sponsors */
+}
 
+.past-sponsors {
+    margin-top: 20px; /* spacing between title and icons */
+}
+
+
+
+/* ===== FORCE ACTIVE LINK (ALWAYS RED) ===== */
+nav a.current {
+    color: red !important;
+    text-decoration: underline;
+}

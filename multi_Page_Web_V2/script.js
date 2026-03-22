@@ -1,6 +1,10 @@
 // ===== Main JS for Multi-Page Site =====
 document.addEventListener('DOMContentLoaded', () => {
 
+    const navbar = document.querySelector('nav');
+    const aboutSection = document.getElementById('about-section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
     // ==============================
     // ===== GALLERY LIGHTBOX =====
     // ==============================
@@ -17,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let prevBtn = lightbox.querySelector('.nav-arrow.prev');
             let nextBtn = lightbox.querySelector('.nav-arrow.next');
 
-            // Create arrows if missing
             if (!prevBtn || !nextBtn) {
                 prevBtn = document.createElement('span');
                 nextBtn = document.createElement('span');
@@ -37,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const showLightbox = (index) => {
                 currentIndex = index;
                 lightboxImg.src = images[index].src;
-                lightboxImg.alt = images[index].alt;
                 lightbox.style.display = 'flex';
             };
 
@@ -45,9 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.addEventListener('click', () => showLightbox(index));
             });
 
-            const closeLightbox = () => {
-                lightbox.style.display = 'none';
-            };
+            const closeLightbox = () => lightbox.style.display = 'none';
 
             closeBtn.addEventListener('click', closeLightbox);
 
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showLightbox(currentIndex);
             });
 
-            // Drag-to-scroll
+            // Drag scroll
             const slider = mediaSection.querySelector('.media-grid');
             if (slider) {
                 let isDown = false, startX, scrollLeft;
@@ -94,20 +94,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==============================
-    // ===== SMOOTH SCROLL (HOME) =====
+    // ===== SMOOTH SCROLL =====
     // ==============================
-    const navLinks = document.querySelectorAll('.nav-links a');
-
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-
             if (!href.includes('#')) return;
 
             const [page, hash] = href.split('#');
             const target = document.getElementById(hash);
 
-            const onHomePage = window.location.pathname.includes('index.html') || window.location.pathname === '/';
+            const onHomePage =
+                window.location.pathname.includes('index.html') ||
+                window.location.pathname === '/';
 
             if (target && onHomePage) {
                 e.preventDefault();
@@ -116,22 +115,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    
-
     // ==============================
-    // ===== NAVBAR SCROLL COLOR =====
+    // ===== NAVBAR BLUR (HOMEPAGE ONLY) =====
     // ==============================
-    const navbar = document.querySelector('nav');
-    const aboutSection = document.getElementById('about-section');
-
     if (navbar && aboutSection) {
-        window.addEventListener('scroll', () => {
-            const trigger = window.scrollY + navbar.offsetHeight;
 
-            navbar.classList.toggle(
-                'navbar-about',
-                trigger >= aboutSection.offsetTop
-            );
+        const navHeight = navbar.offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            const triggerPoint = aboutSection.offsetTop - navHeight;
+
+            if (window.scrollY > triggerPoint) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
         });
     }
 
@@ -166,8 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setActiveLink();
 
-    // Update active state on scroll (homepage only)
+    // ==============================
+    // ===== ACTIVE LINK ON SCROLL =====
+    // ==============================
     if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+
         window.addEventListener('scroll', () => {
             const aboutTop = aboutSection?.offsetTop || 0;
             const scrollPos = window.scrollY + 120;
@@ -183,8 +184,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
-
-
-
-
