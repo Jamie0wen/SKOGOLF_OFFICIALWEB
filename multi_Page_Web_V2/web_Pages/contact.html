@@ -1,58 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+     <link rel="stylesheet" href="../style.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+<body>
+<!-- NAVBAR -->
+<div id="nav-trigger"></div> <!-- Invisible hover band -->
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="../images/Logo1.png" class="logo-img" alt="SKO Golf Logo">
+    </a>
+    <div class="nav-links">
+      <a href="index.html#home-section">Home</a>
+      <a href="contact.html"class="current">Contact Me</a>
+
+    </div>
+  </div>
+</nav>
+
+
 <main>
     <section id="contact">
         <h2>Contact</h2>
         <p>
-            If you’d like to get in touch regarding sponsorships or opportunities, 
+            If you would like to get in touch regarding sponsorships or opportunities,
             please fill out the form below.
         </p>
-
         <form action="https://formspree.io/f/xyzabc123" method="POST">
-
             <label for="name">Full Name*</label>
             <input type="text" id="name" name="name" required>
-
-            <label for="business">Business</label>
-            <input type="text" id="business" name="business" required>
 
             <label for="email">Email Address*</label>
             <input type="email" id="email" name="email" required>
 
+            <label for="business">Business</label>
+            <input type="text" id="business" name="business">
+
             <label for="message">Your Message*</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <textarea id="message" name="message" required></textarea>
 
             <button type="submit">Send Message</button>
-
         </form>
     </section>
 </main>
 
 
-
-
-
-
 <!-- FOOTER / Social -->
-<footer id="footer">
-    <h2>Social</h2>
+    <footer id="footer">
+        <h2>Social</h2>
+        <div class="Social">
+            <a href="https://www.instagram.com/sko.golf/" target="_blank" class="social-icon">
+                <img src="../images/Instalogo.png" alt="Instalogo" class="social-img">
+            </a>
+            <a href="https://www.wagr.com/playerprofile/saskia-owen-42518" target="_blank" class="social-icon">
+                <img src="../images/WAGR.png" alt="WAGR" class="social-img">
+            </a>
+            <a href="https://peakusa.golf/coach-centre/saskia-owen/" target="_blank" class="social-icon">
+                <img src="../images/PeakUSA.jpg" alt="PeakUSA" class="social-img">
+            </a>
+            <a href="https://www.europeangolfrankings.com/players/34088" target="_blank" class="social-icon">
+                <img src="../images/EGR.jpg" alt="EGR" class="social-img">
+            </a>
+        </div>
+        <p>Copyright &copy; 2026 Saskia Owen</p>
+    </footer>
 
-    <div class="social">
-        <a href="https://www.instagram.com/sko.golf/" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <i class="fab fa-instagram"></i>
-        </a>
 
-        <a href="https://www.wagr.com/playerprofile/saskia-owen-42518" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <img src="../images/WAGR.png" alt="WAGR Ranking" class="social-img">
-        </a>
+ <!-- Scripts -->
+<script src="../script.js"></script>
 
-        <a href="https://peakusa.golf/coach-centre/saskia-owen/" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <img src="../images/PeakUSA.jpg" alt="Peak USA Golf" class="social-img">
-        </a>
-
-        <a href="https://www.europeangolfrankings.com/players/34088" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <img src="../images/EGR.jpg" alt="European Golf Rankings" class="social-img">
-        </a>
-    </div>
-
-    <p>Copyright&copy; 2026 Saskia Owen</p>
-</footer>
-
+</body>
+</html>

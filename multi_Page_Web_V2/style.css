@@ -185,6 +185,26 @@ nav.nav-scrolled a {
     border-radius: 10px;
 }
 
+.about-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;           /* space between flag and text */
+  margin-bottom: 20px; /* spacing below the title */
+}
+
+.about-title .flag {
+  width: 90px;   /* small, fixed size */
+  height: auto;
+}
+
+.about-title span {
+  font-size: 2.5rem;  /* your H2 size */
+  line-height: 1;
+}
+
+
+
 /* ===== QUICK FACTS ===== */
 .about .facts-grid {
     display: grid;
@@ -594,8 +614,122 @@ footer {
 
 
 
+
+
+
+
+
 /* ===== FORCE ACTIVE LINK (ALWAYS RED) ===== */
 nav a.current {
     color: red !important;
     text-decoration: underline;
+}
+
+
+
+/* ===== CONTACT SECTION (High-Specificity / Guaranteed to Display) ===== */
+body #contact,
+body #contact h2,
+body #contact p,
+body #contact form,
+body #contact label,
+body #contact input,
+body #contact textarea,
+body #contact button {
+    all: unset; /* reset any previous conflicting styles */
+    box-sizing: border-box;
+}
+
+/* Section container */
+body #contact {
+    display: block !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    margin: 60px auto !important;
+    text-align: center !important;
+    font-family: Arial, sans-serif !important;
+}
+
+/* Section heading */
+body #contact h2 {
+    display: block !important;
+    font-size: 2rem !important;
+    margin-bottom: 15px !important;
+    text-align: center !important;
+    margin-top: -80px;
+}
+
+/* Section paragraph */
+body #contact p {
+    display: block !important;
+    font-size: 1rem !important;
+    color: #333 !important;
+    margin-bottom: 30px !important;
+    text-align: center !important;
+}
+
+/* Form layout */
+body #contact form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    width: 100% !important;
+}
+
+/* Labels */
+body #contact label {
+    display: block !important;
+    text-align: left !important;
+    font-weight: bold !important;
+    margin-bottom: 5px !important;
+}
+
+/* Inputs & textarea */
+body #contact input,
+body #contact textarea {
+    display: block !important;
+    width: 100% !important;
+    padding: 12px 15px !important;
+    font-size: 1rem !important;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    resize: vertical !important;
+    text-align: left !important; /* left-aligned cursor and text */
+}
+
+/* Make textarea taller */
+body #contact textarea {
+    min-height: 150px !important;
+}
+
+/* Submit button */
+body #contact button {
+    display: block !important;
+    width: 100% !important;
+    padding: 15px !important;
+    font-size: 1rem !important;
+    border: none !important;
+    border-radius: 8px !important;
+    background-color: #ff4b2b !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    transition: background 0.3s, transform 0.2s !important;
+}
+
+/* Button hover effect */
+body #contact button:hover {
+    background-color: #ff0000 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    body #contact {
+        margin: 40px 20px !important;
+    }
+
+    body #contact button {
+        font-size: 0.95rem !important;
+        padding: 12px !important;
+    }
 }
