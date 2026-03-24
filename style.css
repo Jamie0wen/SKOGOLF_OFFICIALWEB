@@ -734,3 +734,47 @@ body #contact button:hover {
     }
 }
 
+/* ===== Success Page ===== */
+body.success-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.success-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.success-box h1 {
+    color: #2e7d32;
+}
+
+.success-box a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px; /* bigger than before */
+    font-size: 1.1rem;  /* slightly larger text */
+    background-color: #2e7d32;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.success-box a:hover {
+    background-color: #256628;
+}
+
+/* optional hover effect: slightly scale up the button */
+.success-box a:hover {
+    background-color: #56e85d;
+    transform: scale(1.05);
+}

@@ -4,54 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message Sent</title>
-    <link rel="stylesheet" href="style.css"> <!-- your main CSS -->
-
-    <style>
-        /* Success box overrides */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            text-align: center;
-        }
-
-        .box {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            color: #2e7d32;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #2e7d32;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-
-        a:hover {
-            background-color: #256628;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="success-page">
 
-<div class="box">
+<!-- NAVBAR -->
+<div id="nav-trigger"></div> <!-- Invisible hover band -->
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/Logo1.png" class="logo-img" alt="SKO Golf Logo"> 
+    </a>
+    <div class="nav-links">
+      <a href="index.html#home-section">Home</a>
+      <a href="#"class="current">Message Sent!</a>
+
+    </div>
+  </div>
+</nav>
+
+<div class="success-box">
     <h1>✅ Message Sent!</h1>
-    <p>Thanks for getting in touch. We'll get back to you soon.</p>
-    <a href="index.html">Back to Home</a>
+    <p>Thanks for getting in touch. Saskia get back to you soon.</p>
+    <a href="index.html">Back to Home Page</a>
 </div>
 
 </body>
