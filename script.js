@@ -184,3 +184,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+// ==================================================
+// ===== Bypass Formspree -> custom succes page =====
+// ==================================================
+
+const form = document.getElementById('contact-form');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  const response = await fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  });
+
+  if (response.ok) {
+    window.location.href = "SKOGOLF_OFFICIALWEB/success.html";
+  } else {
+    alert("Error submitting form");
+  }
+});
