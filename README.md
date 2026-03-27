@@ -9,10 +9,10 @@ At the same time, this project serves as a way for me to develop and refine my w
 
 ## Goals
 
-- 📈 Build and grow my sister’s personal brand and following  
-- 🏌️ Showcase her golfing achievements, progress, and journey  
-- 🤝 Provide a platform for potential sponsors and supporters  
-- 💻 Improve my skills in front-end (and potentially back-end) development  
+- Build and grow my sister’s personal brand and following  
+- Showcase her golfing achievements, progress, and journey  
+- Provide a platform for potential sponsors and supporters  
+- Improve my skills in front-end (and potentially back-end) development  
 
 ---
 
@@ -23,7 +23,7 @@ At the same time, this project serves as a way for me to develop and refine my w
 - Dedicated pages for:
   - About / Profile  
   - Achievements  
-  - Sponsorship / Donations  
+  - Sponsorship   
 - Clean and modern UI  
 
 ---
@@ -37,7 +37,7 @@ At the same time, this project serves as a way for me to develop and refine my w
 
 ---
 
-## What I Learned
+## What I Learned So Far
 
 Through this project, I am gaining experience in:
 
@@ -48,9 +48,9 @@ Through this project, I am gaining experience in:
 
 ---
 
-## Future Improvements
+## Potential Future Improvements
 
-- Add blog or updates section for tournament progress  
+- Add a blog or updates section for tournament progress  
 - Integrate social media feeds  
 - Improve SEO and performance  
 - Add analytics to track visitor engagement  
@@ -63,11 +63,6 @@ This project is meaningful to me because it combines two things:
 1. Supporting my sister’s journey in becoming an elite golfer  
 2. Building my own skills as a developer  
 
----
-
-## Live Site
-
-*(Add your deployed site link here once available)*
 
 ---
 
