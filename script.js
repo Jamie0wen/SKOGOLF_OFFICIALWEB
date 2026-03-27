@@ -212,7 +212,7 @@ if (form) {
       });
 
       if (response.ok) {
-        window.location.href = "success.html";
+        window.location.href = "/SKOGOLF_OFFICIALWEB/success.html";
       } else {
         alert("Error submitting form");
       }
