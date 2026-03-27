@@ -156,7 +156,7 @@ nav.nav-scrolled a {
 /* ===== ABOUT ===== */
 #about-section {
     min-height: 100vh;
-    scroll-margin-top: -50px;
+    scroll-margin-top: -60px;
 }
 
 .about {
@@ -206,17 +206,39 @@ nav.nav-scrolled a {
 
 
 /* ===== QUICK FACTS ===== */
-.about .facts-grid {
+
+/* Shared grid styles */
+.facts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
+    gap: 20px;
 }
 
-.about .facts-grid div {
-    background: #C13584;
+/* Default (About section) */
+.about .facts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 10px; /* reduced from 15px */
+}
+
+/* Stripe section */
+.facts-stripe {
+    background: linear-gradient(90deg, #459127, #a6e942);
+    padding: 15px 20px;
+    margin-top: -20px; /* subtle lift instead of -100 */
+    display: flex;
+    align-items: center; /* vertical centering */
+    padding: 10px 20px 20px 20px; /* explicitly equal */
+}
+
+/* Smaller grid inside stripe */
+.facts-stripe .facts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    width: 100%;
+    align-items: center;
+}
+
+/* Shared box styles */
+.facts-grid div {
     color: #fff;
-    padding: 25px 30px;
     border-radius: 10px;
     text-align: center;
     font-weight: 500;
@@ -224,40 +246,26 @@ nav.nav-scrolled a {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.about .facts-grid div:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+/* About boxes */
+.about .facts-grid div {
+    background: #C13584;
+    padding: 25px 30px;
 }
 
-/* Optional: stripe style for Quick Facts */
-.facts-stripe {
-    background: linear-gradient(90deg, #459127, #a6e942);
-    padding: 25px 15px;
-}
-
-/* Container for Quick Facts */
-.facts-stripe .facts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* smaller boxes */
-    gap: 25px; /* space between boxes */
-}
-
-/* Individual fact boxes */
+/* Stripe boxes */
 .facts-stripe .facts-grid div {
-    background: rgba(173, 181, 28, 0.15); /* semi-transparent stripe effect */
-    color: #fff;
+    background: rgba(173, 181, 28, 0.15);
     padding: 12px 18px;
     border-radius: 8px;
-    text-align: center;
-    font-weight: 500;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.facts-stripe .facts-grid div:hover {
+/* Hover effect (shared) */
+.facts-grid div:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0,0,0,0.25);
 }
+
+
 
 /* ===== GALLERY ===== */
 #media {
@@ -268,6 +276,8 @@ nav.nav-scrolled a {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     padding-top: 10px;   /* space you want above content */
+    padding-bottom: 100px;
+    margin-bottom: 10px;
     margin-top: -10px; 
 }
 
@@ -411,9 +421,10 @@ footer {
 #golf-bag {
     max-width: 1000px;
     margin: 80px auto;
-    padding: 20px;
-    padding-top: 20px;   /* space you want above content */
-    margin-top: -110px;   /* push the section up slightly to offset navbar */
+    padding-top: 10px;   /* space you want above content */
+    padding-bottom: 30px;   /* space you want above content */
+    margin-top: -10px;   /* push the section up slightly to offset navbar */
+    margin-bottom: 20px;   /* push the section up slightly to offset navbar */
 }
 
 #golf-bag h2 {
@@ -481,7 +492,9 @@ footer {
   flex-direction: column;
   gap: 10px; /* space between each year */
   margin-bottom: -60px;  /* shrink the gap to footer */
+  margin-top: -10px;
   padding-bottom: 10px; /* optional: further reduce spacing */
+  padding-top: 10px;
 }
 
 
