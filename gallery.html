@@ -31,28 +31,60 @@
  <main>
 
   <!-- GALLERY -->
-  <section id="media" class="section dark fade">
-    <h2>Gallery</h2>
-    <div class="media-grid">
-      <img src="images/img1.jpeg" alt="Gallery Image 1">
-      <img src="images/img2.jpeg" alt="Gallery Image 2">
-      <img src="images/img3.jpeg" alt="Gallery Image 3">
-      <img src="images/img4.jpeg" alt="Gallery Image 4">
-      <img src="images/img5.jpeg" alt="Gallery Image 5">
-      <img src="images/img6.jpg" alt="Gallery Image 6">
-      <img src="images/img7.jpeg" alt="Gallery Image 7">
-      <img src="images/img8.jpg" alt="Gallery Image 8">
-      <img src="images/img9.jpeg" alt="Gallery Image 9">
+<section id="media" class="section dark fade">
+  <h2>Gallery</h2>
+
+  <div class="media-wrapper">
+    <div class="media-track">
+
+      <!-- ORIGINAL -->
+      <div class="media-grid">
+
+        <img src="images/img1.jpeg" alt="Gallery Image 1">
+        <img src="images/img2.jpeg" alt="Gallery Image 2">
+        <img src="images/img3.jpeg" alt="Gallery Image 3">
+        <img src="images/img4.jpeg" alt="Gallery Image 4">
+
+        <!-- VIDEO -->
+        <div class="gallery-item video-thumb">
+          <img src="https://img.youtube.com/vi/U7sqc4bP6Ww/hqdefault.jpg" alt="Video Thumbnail">
+          <div class="play-button">▶</div>
+        </div>
+
+        <img src="images/img5.jpeg" alt="Gallery Image 5">
+        <img src="images/img6.jpg" alt="Gallery Image 6">
+        <img src="images/img7.jpeg" alt="Gallery Image 7">
+        <img src="images/img8.jpg" alt="Gallery Image 8">
+        <img src="images/img9.jpeg" alt="Gallery Image 9">
+
+      </div>
+
+      <!-- DUPLICATE (for seamless scroll) -->
+      <div class="media-grid">
+
+        <img src="images/img1.jpeg" alt="">
+        <img src="images/img2.jpeg" alt="">
+        <img src="images/img3.jpeg" alt="">
+        <img src="images/img4.jpeg" alt="">
+
+        <div class="gallery-item video-thumb">
+          <img src="https://img.youtube.com/vi/U7sqc4bP6Ww/hqdefault.jpg" alt="">
+          <div class="play-button">▶</div>
+        </div>
+
+        <img src="images/img5.jpeg" alt="">
+        <img src="images/img6.jpg" alt="">
+        <img src="images/img7.jpeg" alt="">
+        <img src="images/img8.jpg" alt="">
+        <img src="images/img9.jpeg" alt="">
+
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-<!-- Lightbox -->
-<div id="lightbox">
-  <span class="close">&times;</span>
-  <img id="lightbox-img" src="" alt="Expanded image">
-</div>
-
- <main>
+</main>
 
 <!-- FOOTER / Social -->
     <footer id="footer">
