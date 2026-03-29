@@ -1,6 +1,5 @@
 // ===== Main JS for Multi-Page Site =====
 document.addEventListener('DOMContentLoaded', () => {
-
     const navbar = document.querySelector('nav');
     const aboutSection = document.getElementById('about-section');
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -15,15 +14,15 @@ if (mediaSection) {
     const lightboxVideo = document.getElementById('lightbox-video');
     const closeBtn = lightbox?.querySelector('.close');
 
-    // ✅ ONLY TARGET FIRST GRID (ignores duplicate)
-    const grid = mediaSection.querySelector('.media-grid:first-child');
+    if (!lightbox || !lightboxImg || !lightboxVideo || !closeBtn) return;
 
-    if (!lightbox || !lightboxImg || !lightboxVideo || !closeBtn || !grid) return;
+    // ✅ Get ALL items (both grids)
+    const allChildren = Array.from(
+        mediaSection.querySelectorAll('.media-grid > *')
+    );
 
-    const children = Array.from(grid.children);
-
-    // Build gallery from FIRST grid only
-    const galleryItems = children.map(child => {
+    // ✅ Build gallery
+    const galleryItems = allChildren.map(child => {
         if (child.classList.contains('video-thumb')) {
             return {
                 type: 'video',
@@ -32,37 +31,17 @@ if (mediaSection) {
         }
         return {
             type: 'image',
-            src: child.src
+            src: child.querySelector('img') ? child.querySelector('img').src : child.src
         };
     });
 
     let currentIndex = 0;
 
-    // Create arrows once
-    let prevBtn = lightbox.querySelector('.nav-arrow.prev');
-    let nextBtn = lightbox.querySelector('.nav-arrow.next');
-
-    if (!prevBtn || !nextBtn) {
-        prevBtn = document.createElement('span');
-        nextBtn = document.createElement('span');
-
-        prevBtn.className = 'nav-arrow prev';
-        nextBtn.className = 'nav-arrow next';
-
-        prevBtn.innerHTML = '&#10094;';
-        nextBtn.innerHTML = '&#10095;';
-
-        lightbox.appendChild(prevBtn);
-        lightbox.appendChild(nextBtn);
-    }
-
     // ===== RENDER =====
     const renderItem = (index) => {
         const item = galleryItems[index];
 
-        // 🔥 ALWAYS STOP VIDEO
         lightboxVideo.src = "";
-
         lightboxImg.style.opacity = 0;
         lightboxVideo.style.opacity = 0;
 
@@ -104,64 +83,80 @@ if (mediaSection) {
         renderItem(currentIndex);
     };
 
-    // ===== CLICK EVENTS =====
-    children.forEach((child, index) => {
+    // ===== CLICK EVENTS (FIXED) =====
+    allChildren.forEach((child, index) => {
         child.addEventListener('click', () => openLightbox(index));
     });
 
+    // ===== CONTROLS =====
     closeBtn.addEventListener('click', closeLightbox);
 
     lightbox.addEventListener('click', e => {
         if (e.target === lightbox) closeLightbox();
     });
 
-    nextBtn.addEventListener('click', e => {
-        e.stopPropagation();
-        next();
-    });
+    // Arrows
+    let prevBtn = lightbox.querySelector('.nav-arrow.prev');
+    let nextBtn = lightbox.querySelector('.nav-arrow.next');
 
-    prevBtn.addEventListener('click', e => {
+    if (!prevBtn || !nextBtn) {
+        prevBtn = document.createElement('span');
+        nextBtn = document.createElement('span');
+
+        prevBtn.className = 'nav-arrow prev';
+        nextBtn.className = 'nav-arrow next';
+
+        prevBtn.innerHTML = '&#10094;';
+        nextBtn.innerHTML = '&#10095;';
+
+        lightbox.appendChild(prevBtn);
+        lightbox.appendChild(nextBtn);
+    }
+
+    prevBtn.onclick = (e) => {
         e.stopPropagation();
         prev();
-    });
+    };
 
-    // ===== KEYBOARD =====
+    nextBtn.onclick = (e) => {
+        e.stopPropagation();
+        next();
+    };
+
+    // Keyboard
     document.addEventListener('keydown', (e) => {
         if (lightbox.style.display !== 'flex') return;
-
         if (e.key === 'ArrowRight') next();
         if (e.key === 'ArrowLeft') prev();
         if (e.key === 'Escape') closeLightbox();
     });
-
-    // ===== SWIPE =====
-    let touchStartX = 0;
-
-    lightbox.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
-    });
-
-    lightbox.addEventListener('touchend', e => {
-        const diff = touchStartX - e.changedTouches[0].clientX;
-
-        if (Math.abs(diff) > 50) {
-            diff > 0 ? next() : prev();
-        }
-    });
-
-    // ❌ REMOVED DRAG SCROLL (conflicts with auto-scroll)
 }
 
+// ==============================
+// ===== SMOOTH SCROLL =====
+// ==============================
+navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href.includes('#')) return;
+        const [page, hash] = href.split('#');
+        const target = document.getElementById(hash);
+        const onHomePage =
+            window.location.pathname.includes('index.html') ||
+            window.location.pathname === '/';
+        if (target && onHomePage) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
     // ==============================
     // ===== NAVBAR BLUR (HOMEPAGE ONLY) =====
     // ==============================
     if (navbar && aboutSection) {
-
         const navHeight = navbar.offsetHeight;
-
         window.addEventListener('scroll', () => {
             const triggerPoint = aboutSection.offsetTop - navHeight;
-
             if (window.scrollY > triggerPoint) {
                 navbar.classList.add('nav-scrolled');
             } else {
@@ -169,22 +164,17 @@ if (mediaSection) {
             }
         });
     }
-
     // ==============================
     // ===== ACTIVE NAV LINK =====
     // ==============================
     const setActiveLink = () => {
         const currentPath = window.location.pathname.split('/').pop();
         const currentHash = window.location.hash;
-
         navLinks.forEach(link => {
             link.classList.remove('current');
-
             const href = link.getAttribute('href');
-
             if (href.includes('#')) {
                 const [page, hash] = href.split('#');
-
                 if (
                     (currentHash === `#${hash}` && currentPath === page) ||
                     (hash === 'home-section' && currentHash === '' && currentPath === page)
@@ -198,20 +188,15 @@ if (mediaSection) {
             }
         });
     };
-
     setActiveLink();
-
     // ==============================
     // ===== ACTIVE LINK ON SCROLL =====
     // ==============================
     if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-
         window.addEventListener('scroll', () => {
             const aboutTop = aboutSection?.offsetTop || 0;
             const scrollPos = window.scrollY + 120;
-
             navLinks.forEach(link => link.classList.remove('current'));
-
             if (scrollPos >= aboutTop) {
                 document.querySelector('a[href="index.html#about-section"]')?.classList.add('current');
             } else {
@@ -219,26 +204,19 @@ if (mediaSection) {
             }
         });
     }
-
 });
-
 
 // ==================================================
 // ===== Bypass Formspree -> custom succes page =====
 // ==================================================
-
 // ==================================================
 // ===== Custom Form Redirect (Formspree Fix) =====
 // ==================================================
-
 const form = document.getElementById('contact-form');
-
 if (form) {
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-
     const data = new FormData(form);
-
     try {
       const response = await fetch(form.action, {
         method: form.method,
@@ -247,7 +225,6 @@ if (form) {
           'Accept': 'application/json'
         }
       });
-
       if (response.ok) {
         window.location.href = "/SKOGOLF_OFFICIALWEB/success.html";
       } else {
@@ -258,3 +235,4 @@ if (form) {
     }
   });
 }
+
