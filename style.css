@@ -754,7 +754,7 @@ body #contact label,
 body #contact input,
 body #contact textarea,
 body #contact button {
-    all: unset; /* reset any previous conflicting styles */
+    all: revert; /* reset any previous conflicting styles */
     box-sizing: border-box;
 }
 
@@ -818,6 +818,8 @@ body #contact textarea {
 /* Make textarea taller */
 body #contact textarea {
     min-height: 150px !important;
+    white-space: pre-wrap !important;
+    overflow-wrap: break-word !important;
 }
 
 /* Submit button */
@@ -851,6 +853,51 @@ body #contact button:hover {
         padding: 12px !important;
     }
 }
+
+/* ===== Textarea ===== */
+textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* Focus state (feels more premium) */
+textarea:focus {
+  outline: none;
+  border-color: #000;
+}
+
+/* ===== Character Counter ===== */
+#charCount {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: right;
+  margin-top: -20px;
+  transition: color 0.2s ease;
+}
+
+/* Optional: warning states (JS can toggle these later) */
+#charCount.warning {
+  color: #e67e22; /* orange */
+}
+
+#charCount.limit {
+  color: #e74c3c; /* red */
+}
+
+#charCount.halfway {
+  color: #f4e918; /* yellow */
+}
+
+
 
 /* ===== Success Page ===== */
 body.success-page {

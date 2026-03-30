@@ -35,117 +35,120 @@ document.addEventListener('DOMContentLoaded', () => {
         const lightboxVideo = document.getElementById('lightbox-video');
         const closeBtn = lightbox?.querySelector('.close');
 
-        if (!lightbox || !lightboxImg || !lightboxVideo || !closeBtn) return;
+        if (!lightbox || !lightboxImg || !lightboxVideo || !closeBtn){
+             // skip gallery but DON'T kill the rest of the script
+        } else {
 
-        const allChildren = Array.from(
-            mediaSection.querySelectorAll('.media-grid > *')
-        );
+            const allChildren = Array.from(
+                mediaSection.querySelectorAll('.media-grid > *')
+            );
 
-        const galleryItems = allChildren.map(child => {
-            if (child.classList.contains('video-thumb')) {
-                return {
-                    type: 'video',
-                    src: "https://www.youtube.com/embed/U7sqc4bP6Ww"
-                };
-            }
-            return {
-                type: 'image',
-                src: child.querySelector('img') 
-                    ? child.querySelector('img').src 
-                    : child.src
-            };
-        });
-
-        let currentIndex = 0;
-
-        const renderItem = (index) => {
-            const item = galleryItems[index];
-
-            lightboxVideo.src = "";
-            lightboxImg.style.opacity = 0;
-            lightboxVideo.style.opacity = 0;
-
-            setTimeout(() => {
-                if (item.type === 'image') {
-                    lightboxImg.style.display = 'block';
-                    lightboxVideo.style.display = 'none';
-                    lightboxImg.src = item.src;
-                } else {
-                    lightboxImg.style.display = 'none';
-                    lightboxVideo.style.display = 'block';
-                    lightboxVideo.src = item.src + "?autoplay=1";
+            const galleryItems = allChildren.map(child => {
+                if (child.classList.contains('video-thumb')) {
+                    return {
+                        type: 'video',
+                        src: "https://www.youtube.com/embed/U7sqc4bP6Ww"
+                    };
                 }
+                return {
+                    type: 'image',
+                    src: child.querySelector('img') 
+                        ? child.querySelector('img').src 
+                        : child.src
+                };
+            });
 
-                lightboxImg.style.opacity = 1;
-                lightboxVideo.style.opacity = 1;
-            }, 120);
-        };
+            let currentIndex = 0;
 
-        const openLightbox = (index) => {
-            currentIndex = index;
-            lightbox.style.display = 'flex';
-            renderItem(index);
-        };
+            const renderItem = (index) => {
+                const item = galleryItems[index];
 
-        const closeLightbox = () => {
-            lightbox.style.display = 'none';
-            lightboxImg.src = "";
-            lightboxVideo.src = "";
-        };
+                lightboxVideo.src = "";
+                lightboxImg.style.opacity = 0;
+                lightboxVideo.style.opacity = 0;
 
-        const next = () => {
-            currentIndex = (currentIndex + 1) % galleryItems.length;
-            renderItem(currentIndex);
-        };
+                setTimeout(() => {
+                    if (item.type === 'image') {
+                        lightboxImg.style.display = 'block';
+                        lightboxVideo.style.display = 'none';
+                        lightboxImg.src = item.src;
+                    } else {
+                        lightboxImg.style.display = 'none';
+                        lightboxVideo.style.display = 'block';
+                        lightboxVideo.src = item.src + "?autoplay=1";
+                    }
 
-        const prev = () => {
-            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-            renderItem(currentIndex);
-        };
+                    lightboxImg.style.opacity = 1;
+                    lightboxVideo.style.opacity = 1;
+                }, 120);
+            };
 
-        allChildren.forEach((child, index) => {
-            child.addEventListener('click', () => openLightbox(index));
-        });
+            const openLightbox = (index) => {
+                currentIndex = index;
+                lightbox.style.display = 'flex';
+                renderItem(index);
+            };
 
-        closeBtn.addEventListener('click', closeLightbox);
+            const closeLightbox = () => {
+                lightbox.style.display = 'none';
+                lightboxImg.src = "";
+                lightboxVideo.src = "";
+            };
 
-        lightbox.addEventListener('click', e => {
-            if (e.target === lightbox) closeLightbox();
-        });
+            const next = () => {
+                currentIndex = (currentIndex + 1) % galleryItems.length;
+                renderItem(currentIndex);
+            };
 
-        let prevBtn = lightbox.querySelector('.nav-arrow.prev');
-        let nextBtn = lightbox.querySelector('.nav-arrow.next');
+            const prev = () => {
+                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                renderItem(currentIndex);
+            };
 
-        if (!prevBtn || !nextBtn) {
-            prevBtn = document.createElement('span');
-            nextBtn = document.createElement('span');
+            allChildren.forEach((child, index) => {
+                child.addEventListener('click', () => openLightbox(index));
+            });
 
-            prevBtn.className = 'nav-arrow prev';
-            nextBtn.className = 'nav-arrow next';
+            closeBtn.addEventListener('click', closeLightbox);
 
-            prevBtn.innerHTML = '&#10094;';
-            nextBtn.innerHTML = '&#10095;';
+            lightbox.addEventListener('click', e => {
+                if (e.target === lightbox) closeLightbox();
+            });
 
-            lightbox.appendChild(prevBtn);
-            lightbox.appendChild(nextBtn);
+            let prevBtn = lightbox.querySelector('.nav-arrow.prev');
+            let nextBtn = lightbox.querySelector('.nav-arrow.next');
+
+            if (!prevBtn || !nextBtn) {
+                prevBtn = document.createElement('span');
+                nextBtn = document.createElement('span');
+
+                prevBtn.className = 'nav-arrow prev';
+                nextBtn.className = 'nav-arrow next';
+
+                prevBtn.innerHTML = '&#10094;';
+                nextBtn.innerHTML = '&#10095;';
+
+                lightbox.appendChild(prevBtn);
+                lightbox.appendChild(nextBtn);
+            }
+
+            prevBtn.onclick = (e) => {
+                e.stopPropagation();
+                prev();
+            };
+
+            nextBtn.onclick = (e) => {
+                e.stopPropagation();
+                next();
+            };
+
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.style.display !== 'flex') return;
+                if (e.key === 'ArrowRight') next();
+                if (e.key === 'ArrowLeft') prev();
+                if (e.key === 'Escape') closeLightbox();
+            });
         }
-
-        prevBtn.onclick = (e) => {
-            e.stopPropagation();
-            prev();
-        };
-
-        nextBtn.onclick = (e) => {
-            e.stopPropagation();
-            next();
-        };
-
-        document.addEventListener('keydown', (e) => {
-            if (lightbox.style.display !== 'flex') return;
-            if (e.key === 'ArrowRight') next();
-            if (e.key === 'ArrowLeft') prev();
-            if (e.key === 'Escape') closeLightbox();
-        });
     }
 
     // ==============================
@@ -217,6 +220,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setActiveLink();
 
+    // ==============================
+    // ===== CONTACT COUNTER =====
+    // ==============================
+    const textarea = document.getElementById("message");
+    const charCount = document.getElementById("charCount");
+
+    if (textarea && charCount) {
+        const maxLength = textarea.maxLength > 0 ? textarea.maxLength : 500;
+
+        const updateCounts = () => {
+            const charLength = textarea.value.length;
+
+            charCount.textContent = `${charLength} / ${maxLength} characters`;
+
+            charCount.classList.remove("halfway", "warning", "limit");
+
+            if (charLength >= maxLength) {
+                charCount.classList.add("limit");      // red
+            } else if (charLength >= maxLength * 0.75) {
+                charCount.classList.add("warning");    // orange
+            } else if (charLength >= maxLength * 0.5) {
+                charCount.classList.add("halfway");    // yellow
+            }
+        };
+
+        textarea.addEventListener("input", updateCounts);
+        updateCounts();
+    }
+
+    // ==============================
+    // ===== CUSTOM FORM SUBMIT =====
+    // ==============================
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    window.location.href = "/SKOGOLF_OFFICIALWEB/success.html";
+                } else {
+                    alert("Error submitting form");
+                }
+            } catch (error) {
+                alert("Network error");
+            }
+        });
+    }
+
 });
 
 // ==================================================
@@ -248,6 +307,3 @@ if (form) {
     }
   });
 }
-
-
-
