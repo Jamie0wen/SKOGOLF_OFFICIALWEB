@@ -16,11 +16,24 @@
 <nav id="navbar">
   <div class="nav-container">
     <a href="index.html" class="logo">
-      <img src="images/Logo1.png" class="logo-img" alt="SKO Golf Logo">
+      <img src="images/Logo1.png" class="logo-img" alt="SKO Golf Logo"> 
     </a>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <div class="nav-links">
       <a href="index.html#home-section">Home</a>
-      <a href="contact.html" class="current">Contact Me</a>
+      <a href="index.html#about-section">About</a>
+      <a href="bag.html">In The Bag</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="results.html">Results</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="contact.html"class="current">Contact Me</a>
     </div>
   </div>
 </nav>
@@ -30,11 +43,8 @@
         <h2>Contact</h2>
         <p>If you would like to get in touch regarding sponsorships or opportunities, please fill out the form below.</p>
         
-        <form id="contact-form" action="https://formspree.io/f/mreywvln" method="POST">
+        <form id="contact-form" action="https://formspree.io/f/xdapkqdd" method="POST">
             
-            <!-- Redirect to success page after submit 
-            <input type="hidden" name="_next" value="https://jamie0wen.github.io/SKOGOLF_OFFICIALWEB/success.html">
-            -->
             <!-- Honey Pot to prevent bots -->
             <input type="text" name="_honey" autocomplete="off" style="position: absolute; left: -9999px; top: -9999px;">
 
@@ -51,7 +61,8 @@
             <input type="text" id="business" name="business">
 
             <label for="message">Your Message*</label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea id="message" name="message" required rows="5" maxlength="500"></textarea>
+            <div id="charCount">0 / 500 characters</div>
 
             <button type="submit">Send Message</button>
         </form>

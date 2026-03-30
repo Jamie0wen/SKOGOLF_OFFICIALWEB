@@ -10,49 +10,96 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
+
+
+
+
 <body>
 
- <!-- NAVBAR -->
-  <nav>
-    <div class="nav-container">
-    <a href="index.html" class="logo"><img src="images/Logo1.png" class="logo-img" alt="SKO Golf Logo"></a>
-    <div class="nav-links">
-        <a href="index.html#home-section">Home</a>
-        <a href="index.html#about-section">About</a>
-        <a href="bag.html">In The Bag</a>
-        <a href="gallery.html"class="current">Gallery</a>
-        <a href="results.html">Results</a>
-        <a href="sponsors.html">Sponsors</a>
-        <a href="contact.html">Contact Me</a>
-    </div>
-</nav>
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/Logo1.png" class="logo-img" alt="SKO Golf Logo"> 
+    </a>
 
+    <!-- Hamburger for mobile -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html#home-section">Home</a>
+      <a href="index.html#about-section">About</a>
+      <a href="bag.html">In The Bag</a>
+      <a href="gallery.html"class="current">Gallery</a>
+      <a href="results.html">Results</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="contact.html">Contact Me</a>
+    </div>
+  </div>
+</nav>
 
  <main>
 
   <!-- GALLERY -->
-  <section id="media" class="section dark fade">
-    <h2>Gallery</h2>
-    <div class="media-grid">
-      <img src="images/img1.jpeg" alt="Gallery Image 1">
-      <img src="images/img2.jpeg" alt="Gallery Image 2">
-      <img src="images/img3.jpeg" alt="Gallery Image 3">
-      <img src="images/img4.jpeg" alt="Gallery Image 4">
-      <img src="images/img5.jpeg" alt="Gallery Image 5">
-      <img src="images/img6.jpg" alt="Gallery Image 6">
-      <img src="images/img7.jpeg" alt="Gallery Image 7">
-      <img src="images/img8.jpg" alt="Gallery Image 8">
-      <img src="images/img9.jpeg" alt="Gallery Image 9">
+<section id="media" class="section dark fade">
+  <h2>Gallery</h2>
+
+  <div class="media-wrapper">
+    <div class="media-track">
+
+      <!-- ORIGINAL -->
+      <div class="media-grid">
+
+        <img src="images/img1.jpeg" alt="Gallery Image 1">
+        <img src="images/img2.jpeg" alt="Gallery Image 2">
+        <img src="images/img3.jpeg" alt="Gallery Image 3">
+        <img src="images/img4.jpeg" alt="Gallery Image 4">
+
+        <!-- VIDEO -->
+        <div class="gallery-item video-thumb">
+          <img src="https://img.youtube.com/vi/U7sqc4bP6Ww/hqdefault.jpg" alt="Video Thumbnail">
+          <div class="play-button">▶</div>
+        </div>
+
+        <img src="images/img5.jpeg" alt="Gallery Image 5">
+        <img src="images/img6.jpg" alt="Gallery Image 6">
+        <img src="images/img7.jpeg" alt="Gallery Image 7">
+        <img src="images/img8.jpg" alt="Gallery Image 8">
+        <img src="images/img9.jpeg" alt="Gallery Image 9">
+
+      </div>
+
+      <!-- DUPLICATE (for seamless scroll) -->
+      <div class="media-grid">
+
+        <img src="images/img1.jpeg" alt="">
+        <img src="images/img2.jpeg" alt="">
+        <img src="images/img3.jpeg" alt="">
+        <img src="images/img4.jpeg" alt="">
+
+        <div class="gallery-item video-thumb">
+          <img src="https://img.youtube.com/vi/U7sqc4bP6Ww/hqdefault.jpg" alt="">
+          <div class="play-button">▶</div>
+        </div>
+
+        <img src="images/img5.jpeg" alt="">
+        <img src="images/img6.jpg" alt="">
+        <img src="images/img7.jpeg" alt="">
+        <img src="images/img8.jpg" alt="">
+        <img src="images/img9.jpeg" alt="">
+
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-<!-- Lightbox -->
-<div id="lightbox">
-  <span class="close">&times;</span>
-  <img id="lightbox-img" src="" alt="Expanded image">
-</div>
-
- <main>
+</main>
 
 <!-- FOOTER / Social -->
     <footer id="footer">
@@ -77,5 +124,16 @@
 
  <!-- Scripts -->
 <script src="script.js"></script>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <span class="close">&times;</span>
+
+  <img id="lightbox-img" src="" alt="">
+  <iframe id="lightbox-video" src="" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
 </body>
 </html>

@@ -4,6 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('nav');
     const aboutSection = document.getElementById('about-section');
     const navLinks = document.querySelectorAll('.nav-links a');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-links');
+
+    // ==================================================
+    // ===== HAMBURGER MENU =====
+    // ==================================================
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
+    }
 
     // ==============================
     // ===== GALLERY LIGHTBOX =====
@@ -12,11 +31,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (mediaSection) {
         const lightbox = document.getElementById('lightbox');
-        const lightboxImg = lightbox?.querySelector('img');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxVideo = document.getElementById('lightbox-video');
         const closeBtn = lightbox?.querySelector('.close');
-        const images = Array.from(mediaSection.querySelectorAll('.media-grid img'));
 
-        if (lightbox && lightboxImg && closeBtn && images.length) {
+        if (!lightbox || !lightboxImg || !lightboxVideo || !closeBtn){
+             // skip gallery but DON'T kill the rest of the script
+        } else {
+
+            const allChildren = Array.from(
+                mediaSection.querySelectorAll('.media-grid > *')
+            );
+
+            const galleryItems = allChildren.map(child => {
+                if (child.classList.contains('video-thumb')) {
+                    return {
+                        type: 'video',
+                        src: "https://www.youtube.com/embed/U7sqc4bP6Ww"
+                    };
+                }
+                return {
+                    type: 'image',
+                    src: child.querySelector('img') 
+                        ? child.querySelector('img').src 
+                        : child.src
+                };
+            });
+
+            let currentIndex = 0;
+
+            const renderItem = (index) => {
+                const item = galleryItems[index];
+
+                lightboxVideo.src = "";
+                lightboxImg.style.opacity = 0;
+                lightboxVideo.style.opacity = 0;
+
+                setTimeout(() => {
+                    if (item.type === 'image') {
+                        lightboxImg.style.display = 'block';
+                        lightboxVideo.style.display = 'none';
+                        lightboxImg.src = item.src;
+                    } else {
+                        lightboxImg.style.display = 'none';
+                        lightboxVideo.style.display = 'block';
+                        lightboxVideo.src = item.src + "?autoplay=1";
+                    }
+
+                    lightboxImg.style.opacity = 1;
+                    lightboxVideo.style.opacity = 1;
+                }, 120);
+            };
+
+            const openLightbox = (index) => {
+                currentIndex = index;
+                lightbox.style.display = 'flex';
+                renderItem(index);
+            };
+
+            const closeLightbox = () => {
+                lightbox.style.display = 'none';
+                lightboxImg.src = "";
+                lightboxVideo.src = "";
+            };
+
+            const next = () => {
+                currentIndex = (currentIndex + 1) % galleryItems.length;
+                renderItem(currentIndex);
+            };
+
+            const prev = () => {
+                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                renderItem(currentIndex);
+            };
+
+            allChildren.forEach((child, index) => {
+                child.addEventListener('click', () => openLightbox(index));
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+
+            lightbox.addEventListener('click', e => {
+                if (e.target === lightbox) closeLightbox();
+            });
 
             let prevBtn = lightbox.querySelector('.nav-arrow.prev');
             let nextBtn = lightbox.querySelector('.nav-arrow.next');
@@ -35,61 +132,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 lightbox.appendChild(nextBtn);
             }
 
-            let currentIndex = 0;
-
-            const showLightbox = (index) => {
-                currentIndex = index;
-                lightboxImg.src = images[index].src;
-                lightbox.style.display = 'flex';
+            prevBtn.onclick = (e) => {
+                e.stopPropagation();
+                prev();
             };
 
-            images.forEach((img, index) => {
-                img.addEventListener('click', () => showLightbox(index));
-            });
-
-            const closeLightbox = () => lightbox.style.display = 'none';
-
-            closeBtn.addEventListener('click', closeLightbox);
-
-            lightbox.addEventListener('click', e => {
-                if (e.target === lightbox) closeLightbox();
-            });
-
-            prevBtn.addEventListener('click', e => {
+            nextBtn.onclick = (e) => {
                 e.stopPropagation();
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                showLightbox(currentIndex);
+                next();
+            };
+
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.style.display !== 'flex') return;
+                if (e.key === 'ArrowRight') next();
+                if (e.key === 'ArrowLeft') prev();
+                if (e.key === 'Escape') closeLightbox();
             });
-
-            nextBtn.addEventListener('click', e => {
-                e.stopPropagation();
-                currentIndex = (currentIndex + 1) % images.length;
-                showLightbox(currentIndex);
-            });
-
-            // Drag scroll
-            const slider = mediaSection.querySelector('.media-grid');
-            if (slider) {
-                let isDown = false, startX, scrollLeft;
-
-                slider.addEventListener('mousedown', e => {
-                    isDown = true;
-                    startX = e.pageX - slider.offsetLeft;
-                    scrollLeft = slider.scrollLeft;
-                });
-
-                ['mouseleave', 'mouseup'].forEach(event =>
-                    slider.addEventListener(event, () => isDown = false)
-                );
-
-                slider.addEventListener('mousemove', e => {
-                    if (!isDown) return;
-                    e.preventDefault();
-                    const x = e.pageX - slider.offsetLeft;
-                    const walk = (x - startX) * 2;
-                    slider.scrollLeft = scrollLeft - walk;
-                });
-            }
         }
     }
 
@@ -116,10 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==============================
-    // ===== NAVBAR BLUR (HOMEPAGE ONLY) =====
+    // ===== NAVBAR SCROLL EFFECT =====
     // ==============================
     if (navbar && aboutSection) {
-
         const navHeight = navbar.offsetHeight;
 
         window.addEventListener('scroll', () => {
@@ -142,7 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navLinks.forEach(link => {
             link.classList.remove('current');
-
             const href = link.getAttribute('href');
 
             if (href.includes('#')) {
@@ -165,43 +221,74 @@ document.addEventListener('DOMContentLoaded', () => {
     setActiveLink();
 
     // ==============================
-    // ===== ACTIVE LINK ON SCROLL =====
+    // ===== CONTACT COUNTER =====
     // ==============================
-    if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+    const textarea = document.getElementById("message");
+    const charCount = document.getElementById("charCount");
 
-        window.addEventListener('scroll', () => {
-            const aboutTop = aboutSection?.offsetTop || 0;
-            const scrollPos = window.scrollY + 120;
+    if (textarea && charCount) {
+        const maxLength = textarea.maxLength > 0 ? textarea.maxLength : 500;
 
-            navLinks.forEach(link => link.classList.remove('current'));
+        const updateCounts = () => {
+            const charLength = textarea.value.length;
 
-            if (scrollPos >= aboutTop) {
-                document.querySelector('a[href="index.html#about-section"]')?.classList.add('current');
-            } else {
-                document.querySelector('a[href="index.html#home-section"]')?.classList.add('current');
+            charCount.textContent = `${charLength} / ${maxLength} characters`;
+
+            charCount.classList.remove("halfway", "warning", "limit");
+
+            if (charLength >= maxLength) {
+                charCount.classList.add("limit");      // red
+            } else if (charLength >= maxLength * 0.75) {
+                charCount.classList.add("warning");    // orange
+            } else if (charLength >= maxLength * 0.5) {
+                charCount.classList.add("halfway");    // yellow
+            }
+        };
+
+        textarea.addEventListener("input", updateCounts);
+        updateCounts();
+    }
+
+    // ==============================
+    // ===== CUSTOM FORM SUBMIT =====
+    // ==============================
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const data = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    window.location.href = "/SKOGOLF_OFFICIALWEB/success.html";
+                } else {
+                    alert("Error submitting form");
+                }
+            } catch (error) {
+                alert("Network error");
             }
         });
     }
 
 });
 
-
 // ==================================================
 // ===== Bypass Formspree -> custom succes page =====
 // ==================================================
-
 // ==================================================
 // ===== Custom Form Redirect (Formspree Fix) =====
 // ==================================================
-
 const form = document.getElementById('contact-form');
-
 if (form) {
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-
     const data = new FormData(form);
-
     try {
       const response = await fetch(form.action, {
         method: form.method,
@@ -210,7 +297,6 @@ if (form) {
           'Accept': 'application/json'
         }
       });
-
       if (response.ok) {
         window.location.href = "/SKOGOLF_OFFICIALWEB/success.html";
       } else {
