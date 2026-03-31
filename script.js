@@ -193,32 +193,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================
     // ===== ACTIVE NAV LINK =====
     // ==============================
-    const setActiveLink = () => {
-        const currentPath = window.location.pathname.split('/').pop();
-        const currentHash = window.location.hash;
+   const sections = document.querySelectorAll("section");
 
-        navLinks.forEach(link => {
-            link.classList.remove('current');
-            const href = link.getAttribute('href');
+    window.addEventListener("scroll", () => {
+    let current = "";
 
-            if (href.includes('#')) {
-                const [page, hash] = href.split('#');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
 
-                if (
-                    (currentHash === `#${hash}` && currentPath === page) ||
-                    (hash === 'home-section' && currentHash === '' && currentPath === page)
-                ) {
-                    link.classList.add('current');
-                }
-            } else {
-                if (href === currentPath) {
-                    link.classList.add('current');
-                }
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("current");
+
+        const href = link.getAttribute("href");
+
+        if (href.includes("#")) {
+            const targetId = href.split("#")[1];
+
+            if (targetId === current) {
+                link.classList.add("current");
             }
-        });
-    };
+        }
+    });
+});
 
-    setActiveLink();
 
     // ==============================
     // ===== CONTACT COUNTER =====

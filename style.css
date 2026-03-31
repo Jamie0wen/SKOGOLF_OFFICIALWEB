@@ -4,6 +4,62 @@
   box-sizing: border-box;
 }
 
+/* ===== Color THEORY ===== */
+
+:root {
+  /* ===== PALETTE ===== */
+  --primary-100: #ECF3E7;
+  --primary-200: #c8f9c7;
+  --primary-300: #B7CDBA;
+  --primary-500: #84A98C;
+  --primary-700: #527953;
+  --secondary-100: #56e85d;
+  --secondary-300: #2e7d32;
+  --tertiary-100:#ff0000;
+  --tertiary-200: #222;
+
+
+
+  /* ===== SEMANTIC ===== */
+
+  /* ===== SURFACES ===== */
+  --color-1-background: var(--primary-100);
+  --color-2-background: var(--primary-300);
+  --color-3-background: var(--primary-500);
+  --color-4-background: var(--primary-700);
+  --color-accents: var(--tertiary-100);
+  --color-boxes: var(--primary-200);
+  --color-send-box: var(--secondary-300);
+  --color-sent-box: var(--secondary-100);
+  --color-footer: var(--tertiary-200);
+
+
+  /* ===== SHADOWS===== */
+  --color-navbar: rgba(2, 100, 56, 0.55);
+  --color-navbar-about: rgba(255, 255, 255, 0.8);
+
+
+  /* ===== TEXT COLOUR===== */
+  --color-text-dark: #1e1e1e;
+  --color-text-medium: #666;
+  --color-text-light: #ffffff;
+  
+
+
+
+
+
+
+}
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* ===== BASE ===== */
 html {
     scroll-behavior: smooth;
@@ -12,8 +68,8 @@ html {
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #000;
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -36,13 +92,14 @@ nav {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(2, 100, 56, 0.55);
+    background: var(--color-navbar);
     transition: background 0.3s ease, color 0.3s ease;
+    padding-bottom: 5px;
 }
 
 nav.navbar-about {
-    background: #f1f1f1;
-    color: #000;
+    background: var(--color-text-light);
+    color: var(--color-text-dark);
 }
 
 nav.navbar-about a {
@@ -54,7 +111,6 @@ nav.navbar-about a {
     margin: 0 auto;
     height: 60px;
     padding: 0 20px;
-
     display: flex;
     align-items: center;
 }
@@ -64,7 +120,9 @@ nav .logo-img {
     width: auto;
     display: block;
     object-fit: contain;
+    padding-top: 10px
 }
+
 
 .nav-links {
     display: flex;
@@ -73,20 +131,27 @@ nav .logo-img {
 }
 
 .nav-links a {
-    color: white;
+    color: var(--color-text-light);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: 1px solid transparent; 
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #b729a1;
+    color: var(--color-text-light);
+    border: 1px solid  var(--color-4-background);
+    background-color:  var(--color-2-background);
 }
 
 nav a.current {
     font-weight: bold;
     text-decoration: underline;
-    color: red;
+    color: var(--color-accents);
 }
 
 body.home nav {
@@ -107,23 +172,28 @@ body.about nav {
 
 /* Fix text colour on light background */
 body.about nav a {
-    color: #000;
+    color: var(--color-text-dark);
 }
 
 body.about nav {
-    background: rgba(255, 255, 255, 0.75);
+    background: var(--color-navbar-about);
     backdrop-filter: blur(14px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
 /* When scrolling into About (homepage) */
 nav.nav-scrolled {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--color-navbar-about);
     backdrop-filter: blur(12px);
 }
 
 nav.nav-scrolled a {
-    color: #000;
+    color: var(--color-text-dark);
+}
+/* make sure when on about indicated by red navbar */
+
+nav.nav-scrolled a.current {
+    color: var(--color-accents);
 }
 
 
@@ -146,7 +216,7 @@ nav.nav-scrolled a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: var(--color-text-light);
     text-align: center;
 }
 
@@ -161,53 +231,84 @@ nav.nav-scrolled a {
 }
 
 /* ===== ABOUT ===== */
+
 #about-section {
-    min-height: 100vh;
-    scroll-margin-top: -20px;
+  min-height: 100vh;
+  scroll-margin-top: -50px;
 }
 
+/* Main section */
 .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 80px 20px;
-    background: #a2eeb1;
-}
-
-.about-container {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.about-text, .about-image {
-    flex: 1 1 300px;
-}
-
-.about-image img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.about-title {
   display: flex;
   align-items: center;
+  padding: 80px 20px;
+  background: var(--color-1-background);
+
+
+  min-height: 100vh;
+  padding: 100px 20px; /* more breathing room */
+}
+
+/* Layout container */
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Columns */
+.about-text,
+.about-image {
+  flex: 1 1 300px;
+}
+
+/* Image */
+.about-image img {
+  width: 100%;
+  border-radius: 10px;
+  display: block; /* removes inline gap */
+}
+
+/* Title */
+.about-title {
+  display: flex;
   justify-content: center;
-  gap: 10px;           /* space between flag and text */
-  margin-bottom: 20px; /* spacing below the title */
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .about-title .flag {
-  width: 90px;   /* small, fixed size */
+  width: 90px;
   height: auto;
 }
 
 .about-title span {
-  font-size: 2.5rem;  /* your H2 size */
+  font-size: 2.5rem;
   line-height: 1;
+}
+
+/* TEXT CARD ONLY */
+.about-card {
+  max-width: 800px;
+  margin: 0 auto -5px; /* space before Quick Facts */
+  background: var(--color-text-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  border: 3px solid var(--color-2-background);
+}
+
+/* Optional: better paragraph spacing */
+.about-card p {
+  margin-bottom: 15px;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
 }
 
 
@@ -223,20 +324,20 @@ nav.nav-scrolled a {
 /* Default (About section) */
 .about .facts-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    margin-top: 10px; /* reduced from 15px */
+    margin-top: 10px; 
 }
 
 /* Stripe section */
 .facts-stripe {
-    background: linear-gradient(90deg, #459127, #a6e942);
-    padding: 15px 20px;
+    /*background: linear-gradient(90deg, #459127, #a6e942);*/
+    background: linear-gradient(90deg, var(--color-3-background), var(--color-2-background)); /* quick facts box colour gradient*/
     margin-top: -20px; /* subtle lift instead of -100 */
     display: flex;
     align-items: center; /* vertical centering */
     padding: 10px 20px 20px 20px; /* explicitly equal */
 }
 
-/* Smaller grid inside stripe */
+/* Grid inside stripe */
 .facts-stripe .facts-grid {
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     width: 100%;
@@ -245,7 +346,7 @@ nav.nav-scrolled a {
 
 /* Shared box styles */
 .facts-grid div {
-    color: #fff;
+    color: var(--color-text-light);
     border-radius: 10px;
     text-align: center;
     font-weight: 500;
@@ -255,37 +356,39 @@ nav.nav-scrolled a {
 
 /* About boxes */
 .about .facts-grid div {
-    background: #C13584;
+    background: var(--color-4-background);
     padding: 25px 30px;
 }
 
 /* Stripe boxes */
-.facts-stripe .facts-grid div {
+.facts-stripe .facts-grid > div {
     background: rgba(173, 181, 28, 0.15);
     padding: 12px 18px;
-    border-radius: 8px;
+    border-radius: 8px; /* intentional override */
 }
 
-/* Hover effect (shared) */
-.facts-grid div:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+/* Hover effect */
+.facts-grid > div:hover {
+    transform: translateY(-5px); /* Hover height */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
 }
 
 
 /* ===== GALLERY ===== */
 
-
+body {
+    background: var(--color-1-background);
+}
 
 #media {
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
-    background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     margin-top: -20px;
     margin-bottom: 20px;
+    background: var(--color-text-light);
 
 }
 
@@ -330,7 +433,7 @@ nav.nav-scrolled a {
     position: relative;
     z-index: 5;
 
-    /* 🔥 RE-ENABLE clicks */
+    /* RE-ENABLE clicks */
     pointer-events: auto;
 
     transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -360,7 +463,7 @@ nav.nav-scrolled a {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 32px;
-    color: #fff;
+    color: var(--color-text-light);
     background: rgba(0,0,0,0.5);
     width: 55px;
     height: 55px;
@@ -409,7 +512,7 @@ nav.nav-scrolled a {
     top: 20px;
     right: 30px;
     font-size: 2rem;
-    color: #fff;
+    color: var(--color-text-light);
     cursor: pointer;
 }
 
@@ -419,7 +522,7 @@ nav.nav-scrolled a {
     top: 50%;
     transform: translateY(-50%);
     font-size: 2.5rem;
-    color: #fff;
+    color: var(--color-text-light);
     cursor: pointer;
     z-index: 2100;
 }
@@ -448,15 +551,15 @@ nav.nav-scrolled a {
     max-width: 800px;
     margin: 0 auto;
     padding: 25px;
-    background: #fff;
+    background: var(--color-text-light);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* ===== FOOTER ===== */
 #footer {
-    background: #222;
-    color: #fff;
+    background: var(--color-footer);
+    color: var(--color-text-light);
     padding: 15px 0;
     text-align: center;
     margin-top: auto;
@@ -473,15 +576,6 @@ nav.nav-scrolled a {
     transition: transform 0.3s, color 0.3s;
 }
 
-#footer .social-icon i {
-    font-size: 40px;
-    color: #C13584;
-}
-
-#footer .social-icon i:hover {
-    transform: scale(1.3);
-    color: #E1306C;
-}
 
 #footer .social-img {
     height: 60px;
@@ -495,8 +589,8 @@ footer {
   text-align: center;
   font-size: 0.85rem; /* makes the text smaller */
   padding: 30px 0;    /* more space above and below the text */
-  background-color: #f1f1f1; /* optional */
-  color: #333;
+  background-color: var(--color-text-light); /* optional */
+  color: var(--color-footer);
   width: 100%;
   /* optional if you want it always at the bottom of the page */
   position: relative; 
@@ -523,6 +617,11 @@ footer {
 }
 
 /* ===== GOLF BAG ===== */
+
+body {
+    background-color: var(--color-1-background);
+}
+
 #golf-bag {
     max-width: 1000px;
     margin: 80px auto;
@@ -530,6 +629,7 @@ footer {
     padding-bottom: 30px;   /* space you want above content */
     margin-top: -10px;   /* push the section up slightly to offset navbar */
     margin-bottom: 20px;   /* push the section up slightly to offset navbar */
+    background-color: var(--color-text-light);
 }
 
 #golf-bag h2 {
@@ -547,7 +647,7 @@ footer {
 
 /* Card */
 .bag-item {
-    background: #c8f9c7;
+    background: var(--color-boxes);
     padding: 20px;
     border-radius: 14px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
@@ -556,7 +656,7 @@ footer {
 
 .bag-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 24px rgba(255, 0, 0, 0.981);
+    box-shadow: 0 10px 24px rgba(255, 0, 0, 0.981); /* shadow of club boxes */ 
 }
 
 /* Club type */
@@ -571,7 +671,7 @@ footer {
     margin: 0;
     font-size: 15px;
     font-weight: 600;
-    color: #000;
+    color: var(--color-text-dark);
 }
 
 /* Shaft */
@@ -579,8 +679,9 @@ footer {
     display: block;
     margin-top: 6px;
     font-size: 13px;
-    color: #666;
+    color: var(--color-text-medium);
 }
+
 
 
 
@@ -589,113 +690,75 @@ footer {
 .gold    { color: #FFD700; font-weight: bold; }
 .silver  { color: #C0C0C0; font-weight: bold; }
 .bronze  { color: #CD7F32; font-weight: bold; }
-.low-score { color: red; font-weight: normal; }
-.highlight { color: red; font-weight: bold; }
+.low-score { color: var(--color-accents); font-weight: normal; }
+.highlight { color:var(--color-accents); font-weight: bold; }
 
 #career-highlights {
   display: flex;
   flex-direction: column;
   gap: 10px; /* space between each year */
-  margin-bottom: -60px;  /* shrink the gap to footer */
+  margin-bottom: -70px;  /* shrink the gap to footer */
   margin-top: -10px;
-  padding-bottom: 10px; /* optional: further reduce spacing */
+  padding-bottom: 20px; /* optional: further reduce spacing */
   padding-top: 10px;
 }
 
 
-/* ===== SPONSORS SECTION ===== */
+
+
+
+
+/* ===== SPONSORS / SUPPORT SECTION ===== */
+#sponsors,
+#support {
+    text-align: left;
+    padding: 50px 20px;
+    background-color: var(--color-1-background);
+}
+
 #sponsors {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f9f9f9;
-    padding-top: 20px;   /* space you want above content */
-    margin-top: -100px;   /* push the section up slightly to offset navbar */
+    padding-top: 20px;
+    margin-top: -50px; /* offset navbar */
 }
 
-#sponsors h2 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-
-#sponsors p {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #333;
-}
-
-/* Container for sponsor icons */
-.Sponsors {
-    display: flex;
-    justify-content: center;
-    gap: 30px; /* spacing between icons */
-    flex-wrap: wrap; /* wrap to next line on smaller screens */
-}
-
-/* Each sponsor icon link */
-.sponsor-icon {
-    display: inline-block;
-    width: 120px;  /* adjust size as needed */
-    height: 120px;
-    overflow: hidden;
-    border-radius: 50%; /* makes circle */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sponsor-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
-}
-
-/* Sponsor images */
-.sponsor-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* crops image to fit circle */
-    display: block;
-}
-
-/* ===== SPONSORS SECTION ===== */
-#sponsors {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f9f9f9;
-}
-
-#gofundme {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f9f9f9;
-}
-
+/* Headings */
 #sponsors h2,
-#gofundme h2 {
-    margin-bottom: 20px;
+#support h2 {
     font-size: 2rem;
+    margin-bottom: 20px;
 }
 
+#sponsors h3 {
+    margin-top: 40px;
+    font-size: 1.4rem;
+}
+
+/* Text */
 #sponsors p,
-#gofundme p {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    font-size: 1.1rem;
+#support p {
+    max-width: 800px;      /* same as About page */
+    margin: 0 auto 20px;   /* center + spacing below */
+    padding: 25px 20px;    /* card padding */
+    background: var(--color-text-light); /* card background */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     line-height: 1.6;
-    color: #333;
+    font-size: 1.1rem;
+    color: var(--color-text-dark);
+    border: 3px solid var(--color-2-background);
 }
 
-/* Container for logos */
+/* ===== GRID CONTAINER ===== */
 .Sponsors {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;              /* more premium spacing */
+    gap: 40px;
     flex-wrap: wrap;
     margin-top: 20px;
 }
 
-/* Each logo */
+/* ===== ICON STYLE ===== */
 .sponsor-icon {
     width: 110px;
     height: 110px;
@@ -704,9 +767,10 @@ footer {
     align-items: center;
     border-radius: 50%;
     overflow: hidden;
-    background: white; /* keeps circles clean */
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    background: var(--color-text-light);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid var(--color-text-light);
 }
 
 .sponsor-icon:hover {
@@ -714,33 +778,50 @@ footer {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Images */
+/* ===== IMAGES ===== */
 .sponsor-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/*Past Sponsers */
+
+
+/* ===== PAST SPONSORS & SUPPORT TIGHTENED ===== */
 .past-title {
-    margin-top: 60px; /* more space above past sponsors */
+    margin: 10px 0 5px 0;   /* small top + bottom margins */
 }
 
-.past-sponsors {
-    margin-top: 20px; /* spacing between title and icons */
+.Sponsors.past-sponsors {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;              /* smaller gap between sponsor icons */
+    margin: 0;               /* remove any top/bottom margin */
 }
 
+/* ===== SUPPORT SECTION ===== */
+#support {
+    margin: 0 auto;          /* center section */
+    margin-top: -10px;       /* pull it up closer to past sponsors */
+    max-width: 800px;        /* match other content width */
+    text-align: center;      /* center text */
+    padding: 0;              /* remove card padding */
+    background: none;        /* remove background */
+    border-radius: 0;        /* remove rounded corners */
+    box-shadow: none;        /* remove shadow */
+    padding-bottom: 30px;
 
+}
 
-
-
-
-
-
-/* ===== FORCE ACTIVE LINK (ALWAYS RED) ===== */
-nav a.current {
-    color: red !important;
-    text-decoration: underline;
+/* Optional: spacing for paragraph/text inside support */
+#support p {
+    text-align: left;  
+    padding: 20px;           /* keep padding for text itself if needed */
+    background: var(--color-text-light); /* only for text body */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 3px solid var(--color-2-background);
 }
 
 
@@ -781,7 +862,7 @@ body #contact h2 {
 body #contact p {
     display: block !important;
     font-size: 1rem !important;
-    color: #333 !important;
+    color: var(--color-text-dark) !important;
     margin-bottom: 30px !important;
     text-align: center !important;
 }
@@ -809,7 +890,7 @@ body #contact textarea {
     width: 100% !important;
     padding: 12px 15px !important;
     font-size: 1rem !important;
-    border: 1px solid #ccc !important;
+    border: 1px solid var(--color-4-background)!important;
     border-radius: 8px !important;
     resize: vertical !important;
     text-align: left !important; /* left-aligned cursor and text */
@@ -830,15 +911,15 @@ body #contact button {
     font-size: 1rem !important;
     border: none !important;
     border-radius: 8px !important;
-    background-color: #ff4b2b !important;
-    color: #fff !important;
+    background-color: var(--color-navbar) !important;
+    color: var(--color-text-light) !important;
     cursor: pointer !important;
     transition: background 0.3s, transform 0.2s !important;
 }
 
 /* Button hover effect */
 body #contact button:hover {
-    background-color: #ff0000 !important;
+    background-color: var(--color-accents) !important;
     transform: translateY(-2px) !important;
 }
 
@@ -860,7 +941,7 @@ textarea {
   resize: vertical;
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-text-light);
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.4;
@@ -872,13 +953,13 @@ textarea {
 /* Focus state (feels more premium) */
 textarea:focus {
   outline: none;
-  border-color: #000;
+  border-color: var(--color-text-dark);
 }
 
 /* ===== Character Counter ===== */
 #charCount {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--color-text-medium);
   text-align: right;
   margin-top: -20px;
   transition: color 0.2s ease;
@@ -890,11 +971,11 @@ textarea:focus {
 }
 
 #charCount.limit {
-  color: #e74c3c; /* red */
+  color: var(--color-accents); /* red */
 }
 
 #charCount.halfway {
-  color: #f4e918; /* yellow */
+  color: var(--color-sent-box) ; /* green */
 }
 
 
@@ -907,19 +988,20 @@ body.success-page {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: var(--color-text-light);
     text-align: center;
+    background-color: var(--color-1-background);
 }
 
 .success-box {
-    background-color: #fff;
+    background-color: var(--color-text-light);
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 .success-box h1 {
-    color: #2e7d32;
+    color: var(--color-send-box);
 }
 
 .success-box a {
@@ -927,20 +1009,20 @@ body.success-page {
     margin-top: 20px;
     padding: 15px 30px; /* bigger than before */
     font-size: 1.1rem;  /* slightly larger text */
-    background-color: #2e7d32;
-    color: #fff;
+    background-color: var(--color-send-box);
+    color: var(--color-text-light);
     text-decoration: none;
     border-radius: 6px;
     transition: background 0.3s, transform 0.2s;
 }
 
 .success-box a:hover {
-    background-color: #256628;
+    background-color:var(--color-send-box);
 }
 
 /* optional hover effect: slightly scale up the button */
 .success-box a:hover {
-    background-color: #56e85d;
+    background-color:var(--color-sent-box);
     transform: scale(1.05);
 }
 
@@ -959,7 +1041,7 @@ body.success-page {
     display: block;
     width: 28px;
     height: 3px;
-    background: white; /* 🔥 IMPORTANT (visible on dark navbar) */
+    background: var(--color-text-light); /* 🔥 IMPORTANT (visible on dark navbar) */
     margin: 5px 0;
     transition: 0.3s;
 }
@@ -1029,8 +1111,30 @@ body.success-page {
   .nav-links a {
     margin-bottom: 25px;
     font-size: 18px;
-    color: #fff;
+    color: var(--color-text-light);
   }
+
+
+/* ===== FORCE MOBILE NAV LINK COLOR ===== */
+@media (max-width: 768px) {
+  /* existing mobile nav rules ... */
+
+  /* Force mobile nav text light */
+  .nav-links a {
+    color: var(--color-text-light) !important;
+  }
+
+  /* Keep hover effect */
+  .nav-links a:hover,
+  .nav-links a:focus {
+    color: var(--color-accents) !important;
+  }
+
+  /* Keep current page link red */
+  .nav-links a.current {
+    color: var(--color-accents) !important;
+  }
+}
 
   /* ===== ABOUT ===== */
 #about-section {
@@ -1057,3 +1161,4 @@ body.success-page {
 
 
 }
+
