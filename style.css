@@ -687,9 +687,14 @@ body {
 
 
 /* ===== RESULTS COLORS ===== */
-.gold    { color: #FFD700; font-weight: bold; }
+/* =====  .gold    { color: #FFD700; font-weight: bold; }
 .silver  { color: #C0C0C0; font-weight: bold; }
-.bronze  { color: #CD7F32; font-weight: bold; }
+.bronze  { color: #CD7F32; font-weight: bold; } ===== */
+.gold    { color: var(--secondary-300); font-weight: bold; }
+.silver  { color:var(--secondary-300); font-weight: bold; }
+.bronze  { color: var(--secondary-300); font-weight: bold; }
+
+
 .low-score { color: var(--color-accents); font-weight: normal; }
 .highlight { color:var(--color-accents); font-weight: bold; }
 
@@ -975,7 +980,7 @@ textarea:focus {
 }
 
 #charCount.halfway {
-  color: var(--color-sent-box) ; /* green */
+  color: var(--secondary-300) ; /* green */
 }
 
 

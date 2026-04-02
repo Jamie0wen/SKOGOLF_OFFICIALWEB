@@ -195,12 +195,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================
    const sections = document.querySelectorAll("section");
 
-    window.addEventListener("scroll", () => {
+    const updateActiveLink = () => {
     let current = "";
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop - 120;
-        const sectionHeight = section.offsetHeight;
 
         if (window.scrollY >= sectionTop) {
             current = section.getAttribute("id");
@@ -220,7 +219,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-});
+};
+
+// Run on scroll
+window.addEventListener("scroll", updateActiveLink);
+
+// CRITICAL: run once on page load
+updateActiveLink();
+
 
 
     // ==============================
