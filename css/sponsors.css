@@ -1,0 +1,115 @@
+/* ===== SPONSORS / SUPPORT SECTION ===== */
+#sponsors,
+#support {
+    text-align: left;
+    padding: 50px 20px;
+    background-color: var(--color-1-background);
+}
+
+#sponsors {
+    padding-top: 20px;
+    margin-top: -50px; /* offset navbar */
+}
+
+/* Headings */
+#sponsors h2,
+#support h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#sponsors h3 {
+    margin-top: 40px;
+    font-size: 1.4rem;
+}
+
+/* Text */
+#sponsors p,
+#support p {
+    max-width: 800px;      /* same as About page */
+    margin: 0 auto 20px;   /* center + spacing below */
+    padding: 25px 20px;    /* card padding */
+    background: var(--color-text-light); /* card background */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: var(--color-text-dark);
+    border: 3px solid var(--color-2-background);
+}
+
+/* ===== GRID CONTAINER ===== */
+.Sponsors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* ===== ICON STYLE ===== */
+.sponsor-icon {
+    width: 110px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--color-text-light);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid var(--color-text-light);
+}
+
+.sponsor-icon:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== IMAGES ===== */
+.sponsor-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/* ===== PAST SPONSORS & SUPPORT TIGHTENED ===== */
+.past-title {
+    margin: 10px 0 5px 0;   /* small top + bottom margins */
+}
+
+.Sponsors.past-sponsors {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;              /* smaller gap between sponsor icons */
+    margin: 0;               /* remove any top/bottom margin */
+}
+
+/* ===== SUPPORT SECTION ===== */
+#support {
+    margin: 0 auto;          /* center section */
+    margin-top: -10px;       /* pull it up closer to past sponsors */
+    max-width: 800px;        /* match other content width */
+    text-align: center;      /* center text */
+    padding: 0;              /* remove card padding */
+    background: none;        /* remove background */
+    border-radius: 0;        /* remove rounded corners */
+    box-shadow: none;        /* remove shadow */
+    padding-bottom: 30px;
+
+}
+
+/* Optional: spacing for paragraph/text inside support */
+#support p {
+    text-align: left;  
+    padding: 20px;           /* keep padding for text itself if needed */
+    background: var(--color-text-light); /* only for text body */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 3px solid var(--color-2-background);
+}

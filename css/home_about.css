@@ -1,0 +1,175 @@
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url("../images/img6.jpg") center/cover no-repeat;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.43);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.hero-overlay h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-overlay p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* ===== ABOUT ===== */
+
+#about-section {
+  min-height: 100vh;
+  scroll-margin-top: -50px;
+}
+
+/* Main section */
+.about {
+  display: flex;
+  align-items: center;
+  padding: 80px 20px;
+  background: var(--color-1-background);
+
+
+  min-height: 100vh;
+  padding: 100px 20px; /* more breathing room */
+}
+
+/* Layout container */
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Columns */
+.about-text,
+.about-image {
+  flex: 1 1 300px;
+}
+
+/* Image */
+.about-image img {
+  width: 100%;
+  border-radius: 10px;
+  display: block; /* removes inline gap */
+}
+
+/* Title */
+.about-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.about-title .flag {
+  width: 90px;
+  height: auto;
+}
+
+.about-title span {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+/* TEXT CARD ONLY */
+.about-card {
+  max-width: 800px;
+  margin: 0 auto -5px; /* space before Quick Facts */
+  background: var(--color-text-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  border: 3px solid var(--color-2-background);
+}
+
+/* Optional: better paragraph spacing */
+.about-card p {
+  margin-bottom: 15px;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/* ===== QUICK FACTS ===== */
+
+/* Shared grid styles */
+.facts-grid {
+    display: grid;
+    gap: 20px;
+}
+
+/* Default (About section) */
+.about .facts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 10px; 
+}
+
+/* Stripe section */
+.facts-stripe {
+    /*background: linear-gradient(90deg, #459127, #a6e942);*/
+    background: linear-gradient(90deg, var(--color-3-background), var(--color-2-background)); /* quick facts box colour gradient*/
+    margin-top: -20px; /* subtle lift instead of -100 */
+    display: flex;
+    align-items: center; /* vertical centering */
+    padding: 10px 20px 20px 20px; /* explicitly equal */
+}
+
+/* Grid inside stripe */
+.facts-stripe .facts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    width: 100%;
+    align-items: center;
+}
+
+/* Shared box styles */
+.facts-grid div {
+    color: var(--color-text-light);
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* About boxes */
+.about .facts-grid div {
+    background: var(--color-4-background);
+    padding: 25px 30px;
+}
+
+/* Stripe boxes */
+.facts-stripe .facts-grid > div {
+    background: rgba(173, 181, 28, 0.15);
+    padding: 12px 18px;
+    border-radius: 8px; /* intentional override */
+}
+
+/* Hover effect */
+.facts-grid > div:hover {
+    transform: translateY(-5px); /* Hover height */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}

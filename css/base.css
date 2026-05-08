@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ===== Color THEORY ===== */
+
+:root {
+  /* ===== PALETTE ===== */
+  --primary-100: #ECF3E7;
+  --primary-200: #c8f9c7;
+  --primary-300: #B7CDBA;
+  --primary-500: #84A98C;
+  --primary-700: #527953;
+  --secondary-100: #56e85d;
+  --secondary-300: #2e7d32;
+  --tertiary-100:#ff0000;
+  --tertiary-200: #222;
+
+
+
+  /* ===== SEMANTIC ===== */
+
+  /* ===== SURFACES ===== */
+  --color-1-background: var(--primary-100);
+  --color-2-background: var(--primary-300);
+  --color-3-background: var(--primary-500);
+  --color-4-background: var(--primary-700);
+  --color-accents: var(--tertiary-100);
+  --color-boxes: var(--primary-200);
+  --color-send-box: var(--secondary-300);
+  --color-sent-box: var(--secondary-100);
+  --color-footer: var(--tertiary-200);
+
+
+  /* ===== SHADOWS===== */
+  --color-navbar: rgba(2, 100, 56, 0.55);
+  --color-navbar-about: rgba(255, 255, 255, 0.8);
+
+
+  /* ===== TEXT COLOUR===== */
+  --color-text-dark: #1e1e1e;
+  --color-text-medium: #666;
+  --color-text-light: #ffffff;
+  
+
+
+
+
+
+
+}
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 25px;
+}
