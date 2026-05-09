@@ -2,13 +2,12 @@
 #sponsors,
 #support {
     text-align: left;
-    padding: 50px 20px;
+    padding: 70px 20px;
     background-color: var(--color-1-background);
 }
 
 #sponsors {
-    padding-top: 20px;
-    margin-top: -50px; /* offset navbar */
+    margin-top: -100px; /* offset navbar */
 }
 
 /* Headings */
@@ -93,11 +92,11 @@
 /* ===== SUPPORT SECTION ===== */
 #support {
     margin: 0 auto;          /* center section */
-    margin-top: -10px;       /* pull it up closer to past sponsors */
-    max-width: 800px;        /* match other content width */
+    margin-top: -30px;       /* pull it up closer to past sponsors */
+    max-width: 8000px;        /* match other content width */
     text-align: center;      /* center text */
     padding: 0;              /* remove card padding */
-    background: none;        /* remove background */
+    background-color: var(--color-1-background);       /* remove background */
     border-radius: 0;        /* remove rounded corners */
     box-shadow: none;        /* remove shadow */
     padding-bottom: 30px;
@@ -111,5 +110,5 @@
     background: var(--color-text-light); /* only for text body */
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border: 3px solid var(--color-2-background);
+    border: 3px solid var(--color-1-background);
 }
