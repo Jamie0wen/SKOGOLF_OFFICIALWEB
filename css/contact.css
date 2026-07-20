@@ -1,199 +1,118 @@
-/* ===== CONTACT SECTION (High-Specificity / Guaranteed to Display) ===== */
-body #contact,
-body #contact h2,
-body #contact p,
-body #contact form,
-body #contact label,
-body #contact input,
-body #contact textarea,
-body #contact button {
-    all: revert; /* reset any previous conflicting styles */
+/* =========================================================
+   CONTACT.CSS â€” contact.html only
+   Load AFTER base.css.
+   ========================================================= */
+
+#contact {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto 60px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: -30px;   /* push the section up slightly to offset navbar */
+}
+
+#contact h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+#contact p {
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+#contact label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#contact input,
+#contact textarea {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid var(--color-4-background);
+    border-radius: 8px;
+    resize: vertical;
+    text-align: left;
+    font-family: inherit;
     box-sizing: border-box;
 }
 
-/* Section container */
-body #contact {
-    display: block !important;
-    width: 100% !important;
-    max-width: 500px !important;
-    margin: 60px auto !important;
-    text-align: center !important;
-    font-family: Arial, sans-serif !important;
+#contact textarea {
+    min-height: 150px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
-/* Section heading */
-body #contact h2 {
-    display: block !important;
-    font-size: 2rem !important;
-    margin-bottom: 15px !important;
-    text-align: center !important;
-    margin-top: -80px;
+#contact textarea:focus,
+#contact input:focus {
+    outline: none;
+    border-color: var(--color-text-dark);
 }
 
-/* Section paragraph */
-body #contact p {
-    display: block !important;
-    font-size: 1rem !important;
-    color: var(--color-text-dark) !important;
-    margin-bottom: 30px !important;
-    text-align: center !important;
-}
-
-/* Form layout */
-body #contact form {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 20px !important;
-    width: 100% !important;
-}
-
-/* Labels */
-body #contact label {
-    display: block !important;
-    text-align: left !important;
-    font-weight: bold !important;
-    margin-bottom: 5px !important;
-}
-
-/* Inputs & textarea */
-body #contact input,
-body #contact textarea {
-    display: block !important;
-    width: 100% !important;
-    padding: 12px 15px !important;
-    font-size: 1rem !important;
-    border: 1px solid var(--color-4-background)!important;
-    border-radius: 8px !important;
-    resize: vertical !important;
-    text-align: left !important; /* left-aligned cursor and text */
-}
-
-/* Make textarea taller */
-body #contact textarea {
-    min-height: 150px !important;
-    white-space: pre-wrap !important;
-    overflow-wrap: break-word !important;
-}
-
-/* Submit button */
-body #contact button {
-    display: block !important;
-    width: 100% !important;
-    padding: 15px !important;
-    font-size: 1rem !important;
-    border: none !important;
-    border-radius: 8px !important;
-    background-color: var(--color-navbar) !important;
-    color: var(--color-text-light) !important;
-    cursor: pointer !important;
-    transition: background 0.3s, transform 0.2s !important;
-}
-
-/* Button hover effect */
-body #contact button:hover {
-    background-color: var(--color-accents) !important;
-    transform: translateY(-2px) !important;
-}
-
-/* Mobile adjustments */
-@media (max-width: 480px) {
-    body #contact {
-        margin: 40px 20px !important;
-    }
-
-    body #contact button {
-        font-size: 0.95rem !important;
-        padding: 12px !important;
-    }
-}
-
-/* ===== Textarea ===== */
-textarea {
-  width: 100%;
-  resize: vertical;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid var(--color-text-light);
-  font-family: inherit;
-  font-size: 1rem;
-  line-height: 1.4;
-  box-sizing: border-box;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-}
-
-/* Focus state (feels more premium) */
-textarea:focus {
-  outline: none;
-  border-color: var(--color-text-dark);
-}
-
-/* ===== Character Counter ===== */
-#charCount {
-  font-size: 0.85rem;
-  color: var(--color-text-medium);
-  text-align: right;
-  margin-top: -20px;
-  transition: color 0.2s ease;
-}
-
-/* Optional: warning states (JS can toggle these later) */
-#charCount.warning {
-  color: #e67e22; /* orange */
-}
-
-#charCount.limit {
-  color: var(--color-accents); /* red */
-}
-
-#charCount.halfway {
-  color: var(--secondary-300) ; /* green */
-}
-
-
-
-/* ===== Success Page ===== */
-body.success-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: var(--color-text-light);
-    text-align: center;
-    background-color: var(--color-1-background);
-}
-
-.success-box {
-    background-color: var(--color-text-light);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-.success-box h1 {
-    color: var(--color-send-box);
-}
-
-.success-box a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 15px 30px; /* bigger than before */
-    font-size: 1.1rem;  /* slightly larger text */
-    background-color: var(--color-send-box);
+#contact button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-navbar);
     color: var(--color-text-light);
-    text-decoration: none;
-    border-radius: 6px;
+    cursor: pointer;
     transition: background 0.3s, transform 0.2s;
 }
 
-.success-box a:hover {
-    background-color:var(--color-send-box);
+#contact button:hover {
+    background-color: var(--color-accents);
+    transform: translateY(-2px);
 }
 
-/* optional hover effect: slightly scale up the button */
-.success-box a:hover {
-    background-color:var(--color-sent-box);
-    transform: scale(1.05);
+/* ===== Character counter ===== */
+#charCount {
+    font-size: 0.85rem;
+    color: var(--color-text-medium);
+    text-align: right;
+    margin-top: -10px;
+    transition: color 0.2s ease;
+}
+
+#charCount.halfway {
+    color: var(--secondary-300); /* green */
+}
+
+#charCount.warning {
+    color: #e67e22; /* orange */
+}
+
+#charCount.limit {
+    color: var(--color-accents); /* red */
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 480px) {
+    #contact {
+        margin: 30px 20px 40px;
+        max-width: 90%;
+    }
+
+    #contact button {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
 }

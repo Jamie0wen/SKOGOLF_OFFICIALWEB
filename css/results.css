@@ -1,80 +1,31 @@
-/* ===== RESULTS PAGE ===== */
-
-body {
-    background-color: var(--color-1-background);
-}
-
-/* ===== MAIN RESULTS CONTAINER ===== */
+/* =========================================================
+   RESULTS.CSS â€” results.html only (Career Highlights)
+   Load AFTER base.css.
+   ========================================================= */
 
 #career-highlights {
-    max-width: 900px;
-
-    margin: 40px auto;
-    margin-top: -10px;
-    margin-bottom: -70px;
-
-    padding-top: 5px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-    padding-right: 100px;
-
-    background-color: var(--color-text-light);
-
-    border-radius: 20px;
-
+    max-width: 800px;
+    margin: 40px auto 20px;
+    padding: 25px;
+    background: var(--color-text-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 10px;
-
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    gap: 10px; /* space between each year */
+    margin-bottom: 10px;  /* shrink the gap to footer */
+    margin-top: -10px;
+    padding-bottom: 25px; /* optional: further reduce spacing */
+    padding-top: 20px;
 }
 
-/* ===== TITLE ===== */
+/* NOTE: gold/silver/bronze are all mapped to the same
+   --secondary-300 green in your latest CSS (previously they
+   were FFD700 / C0C0C0 / CD7F32). Kept as you wrote it â€” let
+   me know if that was meant to stay 3 distinct colors. */
+.gold      { color: var(--secondary-300); font-weight: bold; }
+.silver    { color: var(--secondary-300); font-weight: bold; }
+.bronze    { color: var(--secondary-300); font-weight: bold; }
 
-#career-highlights h2 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 30px;
-}
-
-/* ===== YEAR HEADINGS ===== */
-
-#career-highlights h3 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-/* ===== RESULTS TEXT ===== */
-
-#career-highlights p,
-#career-highlights li {
-    font-size: 20px;
-    line-height: 1.5;
-}
-
-/* ===== RESULTS COLORS ===== */
-
-.gold {
-    color: var(--secondary-300);
-    font-weight: bold;
-}
-
-.silver {
-    color: var(--secondary-300);
-    font-weight: bold;
-}
-
-.bronze {
-    color: var(--secondary-300);
-    font-weight: bold;
-}
-
-.low-score {
-    color: var(--color-accents);
-    font-weight: normal;
-}
-
-.highlight {
-    color: var(--color-accents);
-    font-weight: bold;
-}
+.low-score { color: var(--color-accents); font-weight: normal; }
+.highlight { color: var(--color-accents); font-weight: bold; }
