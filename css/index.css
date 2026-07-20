@@ -1,0 +1,174 @@
+/* =========================================================
+   HOME.CSS â€” index.html only (hero + about + quick facts)
+   Load AFTER base.css.
+   ========================================================= */
+
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url("../images/img6.jpg") center/cover no-repeat;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.43);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.hero-overlay h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-overlay p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* ===== ABOUT ===== */
+#about-section {
+    min-height: 100vh;
+    scroll-margin-top: -30px;
+}
+
+.about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 20px 30px; /* extra breathing room */
+    background: var(--color-1-background);
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.about-text, .about-image {
+    flex: 1 1 300px;
+}
+
+.about-image img {
+    width: 107%;
+    border-radius: 10px;
+    display: block;
+    margin-top: 30px;
+}
+
+
+.about-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;    /* space between flag and text */
+    margin-bottom: 10px;   /* spacing below the title */
+}
+
+.about-title .flag {
+    width: 90px;   /* small, fixed size */
+    height: auto;
+}
+
+.about-title span {
+    font-size: 2.5rem;  /* your H2 size */
+    line-height: 1;
+}
+
+/* Card wrapping the intro paragraphs, sitting above Quick Facts */
+.about-card {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    background: var(--color-text-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding: 15px;
+    border: 3px solid var(--color-2-background);
+}
+
+.about-card p {
+    margin-bottom: 15px;
+}
+
+.about-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== QUICK FACTS ===== */
+.facts-grid {
+    display: grid;
+    gap: 20px;
+
+}
+
+.about .facts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.facts-stripe {
+    background: linear-gradient(90deg, var(--color-3-background), var(--color-2-background));
+    padding: 10px 20px 20px;
+    margin-top: -20px; /* subtle lift so it tucks under the card above */
+    display: flex;
+    align-items: center;
+}
+
+.facts-stripe .facts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    width: 100%;
+    align-items: center;
+}
+
+.facts-grid div {
+    color: var(--color-text-light);
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about .facts-grid div {
+    background: var(--color-4-background);
+    padding: 25px 30px;
+}
+
+.facts-stripe .facts-grid div {
+    background: rgba(173, 181, 28, 0.15);
+    padding: 12px 18px;
+    border-radius: 8px;
+}
+
+.facts-grid div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+    }
+     .about-image {
+        width: 100%;
+        max-width: 320px;   /* Optional: stops it getting too large */
+        height: auto;
+        padding-right: 20px;
+    }
+}

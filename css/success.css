@@ -1,0 +1,43 @@
+/* =========================================================
+   SUCCESS.CSS â€” success.html only
+   Load AFTER base.css.
+   ========================================================= */
+
+body.success-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 10px; /* clearance below the fixed navbar */
+    text-align: center;
+    background-color: var(--color-1-background);
+}
+
+.success-box {
+    background-color: var(--color-text-light);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.success-box h1 {
+    color: var(--color-send-box);
+}
+
+.success-box a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    background-color: var(--color-send-box);
+    color: var(--color-text-light);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.success-box a:hover {
+    background-color: var(--color-sent-box);
+    transform: scale(1.05);
+}

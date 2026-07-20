@@ -1,0 +1,31 @@
+/* =========================================================
+   RESULTS.CSS â€” results.html only (Career Highlights)
+   Load AFTER base.css.
+   ========================================================= */
+
+#career-highlights {
+    max-width: 800px;
+    margin: 40px auto 20px;
+    padding: 25px;
+    background: var(--color-text-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* space between each year */
+    margin-bottom: 10px;  /* shrink the gap to footer */
+    margin-top: -10px;
+    padding-bottom: 25px; /* optional: further reduce spacing */
+    padding-top: 20px;
+}
+
+/* NOTE: gold/silver/bronze are all mapped to the same
+   --secondary-300 green in your latest CSS (previously they
+   were FFD700 / C0C0C0 / CD7F32). Kept as you wrote it â€” let
+   me know if that was meant to stay 3 distinct colors. */
+.gold      { color: var(--secondary-300); font-weight: bold; }
+.silver    { color: var(--secondary-300); font-weight: bold; }
+.bronze    { color: var(--secondary-300); font-weight: bold; }
+
+.low-score { color: var(--color-accents); font-weight: normal; }
+.highlight { color: var(--color-accents); font-weight: bold; }

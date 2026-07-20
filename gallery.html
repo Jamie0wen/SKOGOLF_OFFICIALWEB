@@ -4,24 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery | SKO Golf</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/gallery.css">
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
-
-
-
-
 <body>
 
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-container">
     <a href="index.html" class="logo">
-      <img src="images/Logo1.png" class="logo-img" alt="SKO Golf Logo"> 
+      <img src="images/Logo1.png" class="logo-img" alt="SKO Golf Logo">
     </a>
 
     <!-- Hamburger for mobile -->
@@ -35,7 +31,7 @@
       <a href="index.html#home-section">Home</a>
       <a href="index.html#about-section">About</a>
       <a href="bag.html">In The Bag</a>
-      <a href="gallery.html"class="current">Gallery</a>
+      <a href="gallery.html">Gallery</a>
       <a href="results.html">Results</a>
       <a href="sponsors.html">Sponsors</a>
       <a href="contact.html">Contact Me</a>
@@ -43,97 +39,105 @@
   </div>
 </nav>
 
- <main>
+<main>
 
   <!-- GALLERY -->
-<section id="media" class="section dark fade">
-  <h2>Gallery</h2>
+  <section id="media" class="section dark fade">
+    <h2>Gallery</h2>
 
-  <div class="media-wrapper">
-    <div class="media-track">
+    <div class="media-wrapper">
+      <div class="media-track">
 
-      <!-- ORIGINAL -->
-      <div class="media-grid">
+        <!-- ORIGINAL -->
+        <div class="media-grid">
 
-        <img src="images/img1.jpeg" alt="Gallery Image 1">
-        <img src="images/img2.jpeg" alt="Gallery Image 2">
-        <img src="images/img3.jpeg" alt="Gallery Image 3">
-        <img src="images/img4.jpeg" alt="Gallery Image 4">
+          <img src="images/img1.jpeg" alt="Gallery Image 1">
+          <img src="images/img2.jpeg" alt="Gallery Image 2">
+          <img src="images/img3.jpeg" alt="Gallery Image 3">
+          <img src="images/img4.jpeg" alt="Gallery Image 4">
 
-        <!-- VIDEO -->
-        <div class="gallery-item video-thumb">
-          <img src="https://img.youtube.com/vi/U7sqc4bP6Ww/hqdefault.jpg" alt="Video Thumbnail">
-          <div class="play-button">▶</div>
+          <!-- VIDEO -->
+          <div class="gallery-item video-thumb">
+            <img src="https://img.youtube.com/vi/U7sqc4bP6Ww/hqdefault.jpg" alt="Video Thumbnail">
+            <div class="play-button">▶</div>
+          </div>
+
+          <img src="images/img5.jpeg" alt="Gallery Image 5">
+          <img src="images/img6.jpg" alt="Gallery Image 6">
+          <img src="images/img7.jpeg" alt="Gallery Image 7">
+          <img src="images/img8.jpg" alt="Gallery Image 8">
+          <img src="images/img9.jpeg" alt="Gallery Image 9">
+          <img src="images/img10.jpeg" alt="Gallery Image 10">
+          <img src="images/img11.jpeg" alt="Gallery Image 11">
+          <img src="images/img12.jpeg" alt="Gallery Image 12">
+          <img src="images/img13.jpeg" alt="Gallery Image 13">
+          <img src="images/img14.jpeg" alt="Gallery Image 14">
+          <img src="images/img15.jpeg" alt="Gallery Image 15">
+
         </div>
 
-        <img src="images/img5.jpeg" alt="Gallery Image 5">
-        <img src="images/img6.jpg" alt="Gallery Image 6">
-        <img src="images/img7.jpeg" alt="Gallery Image 7">
-        <img src="images/img8.jpg" alt="Gallery Image 8">
-        <img src="images/img9.jpeg" alt="Gallery Image 9">
+        <!-- DUPLICATE (visual-only, for seamless scroll — not clickable/indexed) -->
+        <div class="media-grid" aria-hidden="true">
 
-      </div>
+          <img src="images/img1.jpeg" alt="">
+          <img src="images/img2.jpeg" alt="">
+          <img src="images/img3.jpeg" alt="">
+          <img src="images/img4.jpeg" alt="">
 
-      <!-- DUPLICATE (for seamless scroll) -->
-      <div class="media-grid">
+          <div class="gallery-item video-thumb">
+            <img src="https://img.youtube.com/vi/U7sqc4bP6Ww/hqdefault.jpg" alt="">
+            <div class="play-button">▶</div>
+          </div>
 
-        <img src="images/img1.jpeg" alt="">
-        <img src="images/img2.jpeg" alt="">
-        <img src="images/img3.jpeg" alt="">
-        <img src="images/img4.jpeg" alt="">
+          <img src="images/img5.jpeg" alt="">
+          <img src="images/img6.jpg" alt="">
+          <img src="images/img7.jpeg" alt="">
+          <img src="images/img8.jpg" alt="">
+          <img src="images/img9.jpeg" alt="">
+           <img src="images/img10.jpeg" alt="">
+          <img src="images/img11.jpeg" alt="">
+          <img src="images/img12.jpeg" alt="">
+          <img src="images/img13.jpeg" alt="">
+          <img src="images/img14.jpg" alt="">
+          <img src="images/img15.jpeg" alt="">
 
-        <div class="gallery-item video-thumb">
-          <img src="https://img.youtube.com/vi/U7sqc4bP6Ww/hqdefault.jpg" alt="">
-          <div class="play-button">▶</div>
         </div>
 
-        <img src="images/img5.jpeg" alt="">
-        <img src="images/img6.jpg" alt="">
-        <img src="images/img7.jpeg" alt="">
-        <img src="images/img8.jpg" alt="">
-        <img src="images/img9.jpeg" alt="">
-
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
 <!-- FOOTER / Social -->
-    <footer id="footer">
-        <h2>Social</h2>
-        <div class="Social">
-            <a href="https://www.instagram.com/sko.golf/" target="_blank" class="social-icon">
-                <img src="images/Instalogo.png" alt="Instalogo" class="social-img">
-            </a>
-            <a href="https://www.wagr.com/playerprofile/saskia-owen-42518" target="_blank" class="social-icon">
-                <img src="images/WAGR.png" alt="WAGR" class="social-img">
-            </a>
-            <a href="https://peakusa.golf/coach-centre/saskia-owen/" target="_blank" class="social-icon">
-                <img src="images/PeakUSA.jpg" alt="PeakUSA" class="social-img">
-            </a>
-            <a href="https://www.europeangolfrankings.com/players/34088" target="_blank" class="social-icon">
-                <img src="images/EGR.jpg" alt="EGR" class="social-img">
-            </a>
-        </div>
-        <p>Copyright &copy; 2026 Saskia Owen</p>
-    </footer>
-
-
- <!-- Scripts -->
-<script src="script.js"></script>
-
+<footer id="footer">
+    <h2>Social</h2>
+    <div class="Social">
+        <a href="https://www.instagram.com/sko.golf/" target="_blank" class="social-icon">
+            <img src="images/Instalogo.png" alt="Instalogo" class="social-img">
+        </a>
+        <a href="https://www.wagr.com/playerprofile/saskia-owen-42518" target="_blank" class="social-icon">
+            <img src="images/WAGR.png" alt="WAGR" class="social-img">
+        </a>
+        <a href="https://peakusa.golf/coach-centre/saskia-owen/" target="_blank" class="social-icon">
+            <img src="images/PeakUSA.jpg" alt="PeakUSA" class="social-img">
+        </a>
+        <a href="https://www.europeangolfrankings.com/players/34088" target="_blank" class="social-icon">
+            <img src="images/EGR.jpg" alt="EGR" class="social-img">
+        </a>
+    </div>
+    <p>Copyright &copy; 2026 Saskia Owen</p>
+</footer>
 
 <!-- LIGHTBOX -->
 <div id="lightbox">
   <span class="close">&times;</span>
-
   <img id="lightbox-img" src="" alt="">
   <iframe id="lightbox-video" src="" frameborder="0" allowfullscreen></iframe>
 </div>
 
-
+<!-- Scripts -->
+<script src="js/base.js"></script>
+<script src="js/gallery.js"></script>
 </body>
 </html>

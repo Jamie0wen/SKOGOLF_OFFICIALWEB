@@ -1,0 +1,62 @@
+/* =========================================================
+   BAG.CSS â€” bag.html only (What's in the Golf Bag)
+   Load AFTER base.css.
+   ========================================================= */
+
+#golf-bag {
+    max-width: 1000px;
+    margin: 40px auto 20px;
+    padding: 25px;
+    background: var(--color-text-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding-top: 10px;   /* space you want above content */
+    padding-bottom: 30px;   /* space you want below content */
+    margin-top: -7px;   /* push the section up slightly to offset navbar */
+    margin-bottom: 20px;   /* push the section down slightly to offset navbar */
+}
+
+#golf-bag h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+.bag-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.bag-item {
+    background: var(--color-boxes);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.bag-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(255, 0, 0, 0.98); /* red glow on hover */
+}
+
+.bag-item h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.bag-item p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.bag-item span {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--color-text-medium);
+}
